@@ -1,0 +1,348 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.0.1.final using JasperReports Library version 6.0.0  -->
+<!-- 2016-03-08T10:04:02 -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="CertificadoSemillas" language="groovy" pageWidth="842" pageHeight="595" orientation="Landscape" columnWidth="802" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="e488d181-8d20-49c3-a4dc-74fd78c356c5">
+    <property name="ireport.zoom" value="1.331000000000002"/>
+    <property name="ireport.x" value="0"/>
+    <property name="ireport.y" value="0"/>
+    <property name="com.jaspersoft.studio.unit." value="pixel"/>
+    <property name="com.jaspersoft.studio.unit.pageHeight" value="pixel"/>
+    <property name="com.jaspersoft.studio.unit.pageWidth" value="pixel"/>
+    <property name="com.jaspersoft.studio.unit.topMargin" value="pixel"/>
+    <property name="com.jaspersoft.studio.unit.bottomMargin" value="pixel"/>
+    <property name="com.jaspersoft.studio.unit.leftMargin" value="pixel"/>
+    <property name="com.jaspersoft.studio.unit.rightMargin" value="pixel"/>
+    <property name="com.jaspersoft.studio.unit.columnWidth" value="pixel"/>
+    <property name="com.jaspersoft.studio.unit.columnSpacing" value="pixel"/>
+    <property name="com.jaspersoft.studio.data.defaultdataadapter" value="One Empty Record"/>
+    <parameter name="pAno" class="java.lang.Integer"/>
+    <parameter name="pMes" class="java.lang.Integer"/>
+    <parameter name="senave_logo" class="java.io.InputStream"/>
+    <parameter name="gobierno_nacional" class="java.io.InputStream"/>
+    <queryString language="SQL">
+		<![CDATA[SELECT
+	lab_muestras_semillas.id AS lab_muestras_semillas_id,
+	lab_muestras_semillas.muestra_o_lote AS lab_muestras_semillas_muestra_o_lote,
+	lab_muestras_semillas.id_muestreador AS lab_muestras_semillas_id_muestreador,
+	lab_semillas_muestreadores.nombre AS lab_semillas_muestreadores_nombre,
+	lab_semillas_categorias.descripcion AS lab_semillas_categorias_descripcion,
+	lab_semillas_resultados.fecha_analisis AS lab_semillas_resultados_fecha_analisis,
+	lab_semillas_especies.especie AS lab_semillas_especies_especie,
+	lab_semillas_especies.variedad AS lab_semillas_especies_variedad,
+	lab_semillas_muestreadores.id AS lab_semillas_muestreadores_id
+FROM lab_muestras_semillas lab_muestras_semillas  INNER JOIN lab_semillas_resultados lab_semillas_resultados ON
+	 lab_muestras_semillas.id = lab_semillas_resultados.id_muestra  INNER JOIN lab_semillas_categorias lab_semillas_categorias ON
+	 lab_muestras_semillas.id_categoria = lab_semillas_categorias.id  INNER JOIN lab_semillas_especies lab_semillas_especies ON
+	 lab_muestras_semillas.id_especie = lab_semillas_especies.id  INNER JOIN lab_semillas_muestreadores lab_semillas_muestreadores ON
+	 lab_muestras_semillas.id_muestreador = lab_semillas_muestreadores.id
+WHERE
+	 lab_muestras_semillas.id_muestreador > 0
+	 AND EXTRACT(YEAR FROM lab_semillas_resultados.fecha_analisis) =  $P{pAno}
+         AND EXTRACT(MONTH FROM lab_semillas_resultados.fecha_analisis) =  $P{pMes}
+ORDER BY lab_muestras_semillas.id]]>
+    </queryString>
+    <field name="lab_muestras_semillas_id" class="java.lang.Integer"/>
+    <field name="lab_semillas_categorias_descripcion" class="java.lang.String"/>
+    <field name="lab_semillas_resultados_fecha_analisis" class="java.sql.Timestamp"/>
+    <field name="lab_semillas_especies_especie" class="java.lang.String"/>
+    <field name="lab_semillas_especies_variedad" class="java.lang.String"/>
+    <field name="lab_muestras_semillas_id_muestreador" class="java.lang.Integer"/>
+    <field name="lab_semillas_muestreadores_id" class="java.lang.Integer"/>
+    <field name="lab_semillas_muestreadores_nombre" class="java.lang.String"/>
+    <background>
+        <band splitType="Stretch"/>
+    </background>
+    <pageHeader>
+        <band height="199">
+            <property name="local_mesure_unitheight" value="pixel"/>
+            <staticText>
+                <reportElement x="80" y="24" width="600" height="43" uuid="7245da50-9fe9-47c3-a4a8-034d6896ca6e"/>
+                <textElement textAlignment="Center" verticalAlignment="Bottom">
+                    <font fontName="Times New Roman" size="16" isBold="false" isItalic="true"/>
+                </textElement>
+                <text><![CDATA[Dirección de Laboratorios
+Departamento de Laboratorio de Semillas y Calidad Vegetal
+]]></text>
+            </staticText>
+            <image isUsingCache="true" onErrorType="Blank">
+                <reportElement x="1" y="0" width="99" height="67" uuid="2a796f1b-7719-44c4-923e-30eabdfe9194"/>
+                <imageExpression><![CDATA[$P{senave_logo}]]></imageExpression>
+            </image>
+            <image hAlign="Right" isUsingCache="true" onErrorType="Blank">
+                <reportElement x="580" y="0" width="221" height="67" uuid="43128d03-d388-451f-b183-e65174a96c3d"/>
+                <imageExpression><![CDATA[$P{gobierno_nacional}]]></imageExpression>
+            </image>
+            <staticText>
+                <reportElement x="80" y="84" width="600" height="20" uuid="e58bc24c-8a52-4daf-a52d-fdd6b3dc0c2f"/>
+                <textElement textAlignment="Center">
+                    <font fontName="Arial" size="10" isBold="true" isItalic="false"/>
+                </textElement>
+                <text><![CDATA[REGISTRO NACIONAL DE LABORATORIOS DE SEMILLAS - RNLS]]></text>
+            </staticText>
+            <textField>
+                <reportElement x="-1" y="104" width="801" height="20" uuid="7b07147e-c7d9-40e2-bb7f-abefea36944d"/>
+                <textElement textAlignment="Center" verticalAlignment="Middle">
+                    <font fontName="Calibri" size="16" isBold="true"/>
+                </textElement>
+                <textFieldExpression><![CDATA["INFORME DE CERTIFICADOS DE ANALISIS DE SEMILLAS (CAS) EMITIDOS EN " + com.chortitzer.lab.semillas.utils.Utils.getMesUpperCase($P{pMes}) + " - " + $P{pAno}]]></textFieldExpression>
+            </textField>
+            <staticText>
+                <reportElement x="0" y="137" width="330" height="60" uuid="a582915b-95bc-4e71-87f5-94e0a21938b3"/>
+                <textElement>
+                    <paragraph lineSpacingSize="1.23"/>
+                </textElement>
+                <text><![CDATA[RNLS N°: 07
+NOMBRE DEL LABORATORIO: Cooperativa Chortitzer Ltda.
+RESPONSABLE TECNICO: Ing. Agr. Mark Hiebert
+DIRECCION: Avda. Central 926 - Loma Plata - Boquerón - Parguay]]></text>
+            </staticText>
+        </band>
+    </pageHeader>
+    <columnHeader>
+        <band height="30">
+            <staticText>
+                <reportElement x="20" y="15" width="60" height="15" uuid="456eec95-119c-4b89-9cf0-db80e8391f15"/>
+                <box padding="2">
+                    <topPen lineWidth="0.5" lineStyle="Solid"/>
+                    <leftPen lineWidth="0.5" lineStyle="Solid"/>
+                    <bottomPen lineWidth="0.5" lineStyle="Solid"/>
+                    <rightPen lineWidth="0.5" lineStyle="Solid"/>
+                </box>
+                <textElement textAlignment="Center" verticalAlignment="Middle">
+                    <font size="8" isBold="true"/>
+                </textElement>
+                <text><![CDATA[CAS Nº]]></text>
+            </staticText>
+            <staticText>
+                <reportElement x="0" y="15" width="20" height="15" uuid="2ebe3c20-222e-47b8-93c8-55bd69472b0d"/>
+                <box padding="2">
+                    <topPen lineWidth="0.5" lineStyle="Solid"/>
+                    <leftPen lineWidth="0.5" lineStyle="Solid"/>
+                    <bottomPen lineWidth="0.5" lineStyle="Solid"/>
+                    <rightPen lineWidth="0.5" lineStyle="Solid"/>
+                </box>
+                <textElement textAlignment="Center" verticalAlignment="Middle">
+                    <font size="8" isBold="true"/>
+                </textElement>
+                <text><![CDATA[N°]]></text>
+            </staticText>
+            <staticText>
+                <reportElement x="80" y="15" width="100" height="15" uuid="148c9b0e-b279-454f-910a-dade10c5a99b"/>
+                <box padding="2">
+                    <topPen lineWidth="0.5" lineStyle="Solid"/>
+                    <leftPen lineWidth="0.5" lineStyle="Solid"/>
+                    <bottomPen lineWidth="0.5" lineStyle="Solid"/>
+                    <rightPen lineWidth="0.5" lineStyle="Solid"/>
+                </box>
+                <textElement textAlignment="Center" verticalAlignment="Middle">
+                    <font size="8" isBold="true"/>
+                </textElement>
+                <text><![CDATA[Fecha de Emisión CAS]]></text>
+            </staticText>
+            <staticText>
+                <reportElement x="180" y="15" width="270" height="15" uuid="5163aad6-7156-4e82-8dab-1b7b04341c7c"/>
+                <box padding="2">
+                    <topPen lineWidth="0.5" lineStyle="Solid"/>
+                    <leftPen lineWidth="0.5" lineStyle="Solid"/>
+                    <bottomPen lineWidth="0.5" lineStyle="Solid"/>
+                    <rightPen lineWidth="0.5" lineStyle="Solid"/>
+                </box>
+                <textElement textAlignment="Center" verticalAlignment="Middle">
+                    <font size="8" isBold="true"/>
+                </textElement>
+                <text><![CDATA[Especie / Variedad]]></text>
+            </staticText>
+            <staticText>
+                <reportElement x="450" y="15" width="100" height="15" uuid="15870b5e-aa00-46e3-b795-89f87f2214d3"/>
+                <box padding="2">
+                    <topPen lineWidth="0.5" lineStyle="Solid"/>
+                    <leftPen lineWidth="0.5" lineStyle="Solid"/>
+                    <bottomPen lineWidth="0.5" lineStyle="Solid"/>
+                    <rightPen lineWidth="0.5" lineStyle="Solid"/>
+                </box>
+                <textElement textAlignment="Center" verticalAlignment="Middle">
+                    <font size="8" isBold="true"/>
+                </textElement>
+                <text><![CDATA[Categoría]]></text>
+            </staticText>
+            <staticText>
+                <reportElement x="550" y="0" width="150" height="15" uuid="4ca21d69-5321-4567-95c7-67a4a51ebef3"/>
+                <box padding="2">
+                    <topPen lineWidth="0.5" lineStyle="Solid"/>
+                    <leftPen lineWidth="0.5" lineStyle="Solid"/>
+                    <bottomPen lineWidth="0.5" lineStyle="Solid"/>
+                    <rightPen lineWidth="0.5" lineStyle="Solid"/>
+                </box>
+                <textElement textAlignment="Center" verticalAlignment="Middle">
+                    <font size="8" isBold="true"/>
+                </textElement>
+                <text><![CDATA[Muestreado por:]]></text>
+            </staticText>
+            <staticText>
+                <reportElement x="550" y="15" width="100" height="15" uuid="7977957d-5057-40c5-af54-b15ba0747252"/>
+                <box padding="2">
+                    <topPen lineWidth="0.5" lineStyle="Solid"/>
+                    <leftPen lineWidth="0.5" lineStyle="Solid"/>
+                    <bottomPen lineWidth="0.5" lineStyle="Solid"/>
+                    <rightPen lineWidth="0.5" lineStyle="Solid"/>
+                </box>
+                <textElement textAlignment="Center" verticalAlignment="Middle">
+                    <font size="8" isBold="true"/>
+                </textElement>
+                <text><![CDATA[Nombre y Apellido]]></text>
+            </staticText>
+            <staticText>
+                <reportElement x="650" y="15" width="50" height="15" uuid="89ccd355-3df0-485c-a7ef-956961c176bb"/>
+                <box padding="2">
+                    <topPen lineWidth="0.5" lineStyle="Solid"/>
+                    <leftPen lineWidth="0.5" lineStyle="Solid"/>
+                    <bottomPen lineWidth="0.5" lineStyle="Solid"/>
+                    <rightPen lineWidth="0.5" lineStyle="Solid"/>
+                </box>
+                <textElement textAlignment="Center" verticalAlignment="Middle">
+                    <font size="8" isBold="true"/>
+                </textElement>
+                <text><![CDATA[RNMLS N°]]></text>
+            </staticText>
+            <staticText>
+                <reportElement x="700" y="15" width="100" height="15" uuid="6ed661cd-6ae0-49f4-96f8-8cc341394788"/>
+                <box padding="2">
+                    <topPen lineWidth="0.5" lineStyle="Solid"/>
+                    <leftPen lineWidth="0.5" lineStyle="Solid"/>
+                    <bottomPen lineWidth="0.5" lineStyle="Solid"/>
+                    <rightPen lineWidth="0.5" lineStyle="Solid"/>
+                </box>
+                <textElement textAlignment="Center" verticalAlignment="Middle">
+                    <font size="8" isBold="true"/>
+                </textElement>
+                <text><![CDATA[Observaciones]]></text>
+            </staticText>
+        </band>
+    </columnHeader>
+    <detail>
+        <band height="15" splitType="Stretch">
+            <textField pattern="">
+                <reportElement x="650" y="0" width="50" height="15" uuid="3b5b5561-07f8-4902-b818-89122502e0a8"/>
+                <box padding="2">
+                    <topPen lineWidth="0.5"/>
+                    <leftPen lineWidth="0.5"/>
+                    <bottomPen lineWidth="0.5"/>
+                    <rightPen lineWidth="0.5"/>
+                </box>
+                <textElement verticalAlignment="Middle">
+                    <font size="8"/>
+                </textElement>
+                <textFieldExpression><![CDATA[$F{lab_muestras_semillas_id_muestreador} > 1 ? $F{lab_semillas_muestreadores_id} : ""]]></textFieldExpression>
+            </textField>
+            <textField pattern="dd/MM/yyyy">
+                <reportElement x="80" y="0" width="100" height="15" uuid="ebd1a8af-9148-476e-9912-2c7e8b56ac8a"/>
+                <box padding="2">
+                    <topPen lineWidth="0.5"/>
+                    <leftPen lineWidth="0.5"/>
+                    <bottomPen lineWidth="0.5"/>
+                    <rightPen lineWidth="0.5"/>
+                </box>
+                <textElement verticalAlignment="Middle">
+                    <font size="8"/>
+                </textElement>
+                <textFieldExpression><![CDATA[$F{lab_semillas_resultados_fecha_analisis} != null ? $F{lab_semillas_resultados_fecha_analisis} : "-"]]></textFieldExpression>
+            </textField>
+            <textField>
+                <reportElement x="20" y="0" width="60" height="15" uuid="31072421-fb4f-4449-880c-c13031de5181"/>
+                <box padding="2">
+                    <topPen lineWidth="0.5"/>
+                    <leftPen lineWidth="0.5"/>
+                    <bottomPen lineWidth="0.5"/>
+                    <rightPen lineWidth="0.5"/>
+                </box>
+                <textElement verticalAlignment="Middle">
+                    <font size="8"/>
+                </textElement>
+                <textFieldExpression><![CDATA[$F{lab_muestras_semillas_id}]]></textFieldExpression>
+            </textField>
+            <textField>
+                <reportElement x="700" y="0" width="100" height="15" uuid="59dfe06a-1ed2-49fa-b01a-c0fde5e4af45"/>
+                <box padding="2">
+                    <topPen lineWidth="0.5"/>
+                    <leftPen lineWidth="0.5"/>
+                    <bottomPen lineWidth="0.5"/>
+                    <rightPen lineWidth="0.5"/>
+                </box>
+                <textElement verticalAlignment="Middle">
+                    <font size="8"/>
+                </textElement>
+                <textFieldExpression><![CDATA[""]]></textFieldExpression>
+            </textField>
+            <textField>
+                <reportElement x="450" y="0" width="100" height="15" uuid="ae661c84-e6d7-4568-aec9-c80fe5bdfdd9"/>
+                <box padding="2">
+                    <topPen lineWidth="0.5"/>
+                    <leftPen lineWidth="0.5"/>
+                    <bottomPen lineWidth="0.5"/>
+                    <rightPen lineWidth="0.5"/>
+                </box>
+                <textElement verticalAlignment="Middle">
+                    <font size="8"/>
+                </textElement>
+                <textFieldExpression><![CDATA[$F{lab_semillas_categorias_descripcion}]]></textFieldExpression>
+            </textField>
+            <textField>
+                <reportElement x="180" y="0" width="270" height="15" uuid="9ac63016-e80a-416a-bb0c-3c353802120b"/>
+                <box padding="2">
+                    <topPen lineWidth="0.5"/>
+                    <leftPen lineWidth="0.5"/>
+                    <bottomPen lineWidth="0.5"/>
+                    <rightPen lineWidth="0.5"/>
+                </box>
+                <textElement verticalAlignment="Middle">
+                    <font size="8"/>
+                </textElement>
+                <textFieldExpression><![CDATA[$F{lab_semillas_especies_especie} + " / " + $F{lab_semillas_especies_variedad}]]></textFieldExpression>
+            </textField>
+            <textField>
+                <reportElement x="550" y="0" width="100" height="15" uuid="554395f1-9cc9-45be-b195-a20ad2451e71"/>
+                <box padding="2">
+                    <topPen lineWidth="0.5"/>
+                    <leftPen lineWidth="0.5"/>
+                    <bottomPen lineWidth="0.5"/>
+                    <rightPen lineWidth="0.5"/>
+                </box>
+                <textElement verticalAlignment="Middle">
+                    <font size="8"/>
+                </textElement>
+                <textFieldExpression><![CDATA[$F{lab_muestras_semillas_id_muestreador} > 1 ? $F{lab_semillas_muestreadores_nombre} : ""]]></textFieldExpression>
+            </textField>
+            <textField>
+                <reportElement x="0" y="0" width="20" height="15" uuid="90bd00f1-2439-48aa-8e26-898f79f92924"/>
+                <box padding="2">
+                    <topPen lineWidth="0.5"/>
+                    <leftPen lineWidth="0.5"/>
+                    <bottomPen lineWidth="0.5"/>
+                    <rightPen lineWidth="0.5"/>
+                </box>
+                <textElement verticalAlignment="Middle">
+                    <font size="8"/>
+                </textElement>
+                <textFieldExpression><![CDATA[$V{REPORT_COUNT}]]></textFieldExpression>
+            </textField>
+        </band>
+    </detail>
+    <pageFooter>
+        <band height="34">
+            <textField>
+                <reportElement x="700" y="14" width="80" height="20" uuid="2cb5f2c6-be16-4869-9d4b-a9fec78ebdcd"/>
+                <textElement textAlignment="Right" verticalAlignment="Middle">
+                    <font size="8"/>
+                </textElement>
+                <textFieldExpression><![CDATA["Pag. "+$V{PAGE_NUMBER}+" de"]]></textFieldExpression>
+            </textField>
+            <textField evaluationTime="Report">
+                <reportElement x="780" y="14" width="20" height="20" uuid="67b784d2-5077-4eeb-99a6-2fc1c45ff203"/>
+                <textElement verticalAlignment="Middle">
+                    <font size="8"/>
+                </textElement>
+                <textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+            </textField>
+        </band>
+    </pageFooter>
+</jasperReport>

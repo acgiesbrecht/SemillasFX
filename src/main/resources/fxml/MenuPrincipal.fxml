@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.SeparatorMenuItem?>
+
+<MenuBar xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.chortitzer.lab.semillasjfx.controller.MenuController">
+    <menus>
+        <Menu mnemonicParsing="false" text="Laboratorio">
+            <items>
+                <MenuItem fx:id="mnuMuestras" mnemonicParsing="false" onAction="#mnuMuestras" text="Muestras" />
+                <MenuItem fx:id="mnuResultados" mnemonicParsing="false" onAction="#mnuResultados" text="Resultados" />
+                <SeparatorMenuItem mnemonicParsing="false" />
+                <MenuItem fx:id="mnuClientes" mnemonicParsing="false" onAction="#mnuClientes" text="Clientes" />
+                <MenuItem fx:id="mnuCategorias" mnemonicParsing="false" onAction="#mnuCategorias" text="Categorias" />
+                <MenuItem fx:id="mnuEspecies" mnemonicParsing="false" onAction="#mnuEspecies" text="Especies" />
+                <SeparatorMenuItem mnemonicParsing="false" />
+                <MenuItem fx:id="mnuInformes" mnemonicParsing="false" onAction="#mnuInformes" text="Informes" />
+            </items>
+        </Menu>
+    </menus>
+</MenuBar>
