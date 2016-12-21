@@ -3,10 +3,10 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package com.chortitzer.lab.semillasjfx.domain;
 
 import java.io.Serializable;
+import java.time.LocalDate;
 import java.util.Date;
 import javax.persistence.Basic;
 import javax.persistence.CascadeType;
@@ -33,17 +33,27 @@ import javax.xml.bind.annotation.XmlRootElement;
 @Table(name = "lab_muestras_semillas")
 @XmlRootElement
 @NamedQueries({
-    @NamedQuery(name = "LabMuestrasSemillas.findAll", query = "SELECT l FROM LabMuestrasSemillas l"),
-    @NamedQuery(name = "LabMuestrasSemillas.findById", query = "SELECT l FROM LabMuestrasSemillas l WHERE l.id = :id"),
-    @NamedQuery(name = "LabMuestrasSemillas.findByIdentificacionOriginal", query = "SELECT l FROM LabMuestrasSemillas l WHERE l.identificacionOriginal = :identificacionOriginal"),
-    @NamedQuery(name = "LabMuestrasSemillas.findByFechaEntrada", query = "SELECT l FROM LabMuestrasSemillas l WHERE l.fechaEntrada = :fechaEntrada"),
-    @NamedQuery(name = "LabMuestrasSemillas.findByZafra", query = "SELECT l FROM LabMuestrasSemillas l WHERE l.zafra = :zafra"),
-    @NamedQuery(name = "LabMuestrasSemillas.findByProcedencia", query = "SELECT l FROM LabMuestrasSemillas l WHERE l.procedencia = :procedencia"),
-    @NamedQuery(name = "LabMuestrasSemillas.findByMuestraOLote", query = "SELECT l FROM LabMuestrasSemillas l WHERE l.muestraOLote = :muestraOLote"),
-    @NamedQuery(name = "LabMuestrasSemillas.findByLotePeso", query = "SELECT l FROM LabMuestrasSemillas l WHERE l.lotePeso = :lotePeso"),
-    @NamedQuery(name = "LabMuestrasSemillas.findByLoteCantidadBolsas", query = "SELECT l FROM LabMuestrasSemillas l WHERE l.loteCantidadBolsas = :loteCantidadBolsas"),
+    @NamedQuery(name = "LabMuestrasSemillas.findAll", query = "SELECT l FROM LabMuestrasSemillas l")
+    ,
+    @NamedQuery(name = "LabMuestrasSemillas.findById", query = "SELECT l FROM LabMuestrasSemillas l WHERE l.id = :id")
+    ,
+    @NamedQuery(name = "LabMuestrasSemillas.findByIdentificacionOriginal", query = "SELECT l FROM LabMuestrasSemillas l WHERE l.identificacionOriginal = :identificacionOriginal")
+    ,
+    @NamedQuery(name = "LabMuestrasSemillas.findByFechaEntrada", query = "SELECT l FROM LabMuestrasSemillas l WHERE l.fechaEntrada = :fechaEntrada")
+    ,
+    @NamedQuery(name = "LabMuestrasSemillas.findByZafra", query = "SELECT l FROM LabMuestrasSemillas l WHERE l.zafra = :zafra")
+    ,
+    @NamedQuery(name = "LabMuestrasSemillas.findByProcedencia", query = "SELECT l FROM LabMuestrasSemillas l WHERE l.procedencia = :procedencia")
+    ,
+    @NamedQuery(name = "LabMuestrasSemillas.findByMuestraOLote", query = "SELECT l FROM LabMuestrasSemillas l WHERE l.muestraOLote = :muestraOLote")
+    ,
+    @NamedQuery(name = "LabMuestrasSemillas.findByLotePeso", query = "SELECT l FROM LabMuestrasSemillas l WHERE l.lotePeso = :lotePeso")
+    ,
+    @NamedQuery(name = "LabMuestrasSemillas.findByLoteCantidadBolsas", query = "SELECT l FROM LabMuestrasSemillas l WHERE l.loteCantidadBolsas = :loteCantidadBolsas")
+    ,
     @NamedQuery(name = "LabMuestrasSemillas.findByFechaMuestreo", query = "SELECT l FROM LabMuestrasSemillas l WHERE l.fechaMuestreo = :fechaMuestreo")})
 public class LabMuestrasSemillas implements Serializable {
+
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -54,8 +64,7 @@ public class LabMuestrasSemillas implements Serializable {
     private String identificacionOriginal;
     @Basic(optional = false)
     @Column(name = "fecha_entrada")
-    @Temporal(TemporalType.TIMESTAMP)
-    private Date fechaEntrada;
+    private LocalDate fechaEntrada;
     @Column(name = "zafra")
     private String zafra;
     @Column(name = "procedencia")
@@ -68,8 +77,7 @@ public class LabMuestrasSemillas implements Serializable {
     @Column(name = "lote_cantidad_bolsas")
     private String loteCantidadBolsas;
     @Column(name = "fecha_muestreo")
-    @Temporal(TemporalType.TIMESTAMP)
-    private Date fechaMuestreo;
+    private LocalDate fechaMuestreo;
     @JoinColumn(name = "id_muestreador", referencedColumnName = "id")
     @ManyToOne
     private LabSemillasMuestreadores idMuestreador;
@@ -92,7 +100,7 @@ public class LabMuestrasSemillas implements Serializable {
         this.id = id;
     }
 
-    public LabMuestrasSemillas(Integer id, Date fechaEntrada, int muestraOLote) {
+    public LabMuestrasSemillas(Integer id, LocalDate fechaEntrada, int muestraOLote) {
         this.id = id;
         this.fechaEntrada = fechaEntrada;
         this.muestraOLote = muestraOLote;
@@ -114,11 +122,11 @@ public class LabMuestrasSemillas implements Serializable {
         this.identificacionOriginal = identificacionOriginal;
     }
 
-    public Date getFechaEntrada() {
+    public LocalDate getFechaEntrada() {
         return fechaEntrada;
     }
 
-    public void setFechaEntrada(Date fechaEntrada) {
+    public void setFechaEntrada(LocalDate fechaEntrada) {
         this.fechaEntrada = fechaEntrada;
     }
 
@@ -162,11 +170,11 @@ public class LabMuestrasSemillas implements Serializable {
         this.loteCantidadBolsas = loteCantidadBolsas;
     }
 
-    public Date getFechaMuestreo() {
+    public LocalDate getFechaMuestreo() {
         return fechaMuestreo;
     }
 
-    public void setFechaMuestreo(Date fechaMuestreo) {
+    public void setFechaMuestreo(LocalDate fechaMuestreo) {
         this.fechaMuestreo = fechaMuestreo;
     }
 
@@ -210,6 +218,7 @@ public class LabMuestrasSemillas implements Serializable {
         this.labSemillasResultados = labSemillasResultados;
     }
 
+    /*
     @Override
     public int hashCode() {
         int hash = 0;
@@ -228,11 +237,11 @@ public class LabMuestrasSemillas implements Serializable {
             return false;
         }
         return true;
-    }
+    }*/
 
     @Override
     public String toString() {
         return "com.chortitzer.lab.semillas.LabMuestrasSemillas[ id=" + id + " ]";
     }
-    
+
 }

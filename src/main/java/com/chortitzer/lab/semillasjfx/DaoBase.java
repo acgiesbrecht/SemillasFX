@@ -53,7 +53,7 @@ public class DaoBase<T> {
             List<T> result = typedQuery.getResultList();
             return result;
         } catch (Exception ex) {
-            App.showException(Thread.currentThread().getStackTrace()[1].getMethodName(), ex.getMessage(), ex);
+            //App.showException(Thread.currentThread().getStackTrace()[1].getMethodName(), ex.getMessage(), ex);
             return null;
         }
     }
@@ -66,7 +66,7 @@ public class DaoBase<T> {
         try {
             return this.fetch(startIndex, filteredColumns, sortedColumns, sortingVersus, maxResult, new ArrayList<String>());
         } catch (Exception ex) {
-            App.showException(Thread.currentThread().getStackTrace()[1].getMethodName(), ex.getMessage(), ex);
+            //App.showException(Thread.currentThread().getStackTrace()[1].getMethodName(), ex.getMessage(), ex);
             return null;
         }
     }
@@ -115,7 +115,7 @@ public class DaoBase<T> {
             em.close();
             return tb;
         } catch (Exception ex) {
-            App.showException(Thread.currentThread().getStackTrace()[1].getMethodName(), ex.getMessage(), ex);
+            // App.showException(Thread.currentThread().getStackTrace()[1].getMethodName(), ex.getMessage(), ex);
             return null;
         }
     }
@@ -141,7 +141,7 @@ public class DaoBase<T> {
             }
             return mapJoin;
         } catch (Exception ex) {
-            App.showException(Thread.currentThread().getStackTrace()[1].getMethodName(), ex.getMessage(), ex);
+            // App.showException(Thread.currentThread().getStackTrace()[1].getMethodName(), ex.getMessage(), ex);
             return null;
         }
     }
@@ -161,7 +161,7 @@ public class DaoBase<T> {
 
             return result;
         } catch (Exception ex) {
-            App.showException(Thread.currentThread().getStackTrace()[1].getMethodName(), ex.getMessage(), ex);
+            //  App.showException(Thread.currentThread().getStackTrace()[1].getMethodName(), ex.getMessage(), ex);
             return -1;
         }
     }
@@ -243,7 +243,7 @@ public class DaoBase<T> {
             predicates = lstPredicates.toArray(predicates);
             return predicates;
         } catch (Exception ex) {
-            App.showException(Thread.currentThread().getStackTrace()[1].getMethodName(), ex.getMessage(), ex);
+            //   App.showException(Thread.currentThread().getStackTrace()[1].getMethodName(), ex.getMessage(), ex);
             return null;
         }
     }
@@ -278,7 +278,7 @@ public class DaoBase<T> {
                 em.getTransaction().rollback();
                 em.close();
             }
-            App.showException(Thread.currentThread().getStackTrace()[1].getMethodName(), ex.getMessage(), ex);
+            // App.showException(Thread.currentThread().getStackTrace()[1].getMethodName(), ex.getMessage(), ex);
             throw ex;
         }
         return records;
@@ -296,7 +296,7 @@ public class DaoBase<T> {
                 em.getTransaction().rollback();
                 em.close();
             }
-            App.showException(Thread.currentThread().getStackTrace()[1].getMethodName(), ex.getMessage(), ex);
+            //  App.showException(Thread.currentThread().getStackTrace()[1].getMethodName(), ex.getMessage(), ex);
             throw ex;
         }
         return record;
@@ -313,7 +313,7 @@ public class DaoBase<T> {
             em.close();
             return records;
         } catch (Exception ex) {
-            App.showException(Thread.currentThread().getStackTrace()[1].getMethodName(), ex.getMessage(), ex);
+            //   App.showException(Thread.currentThread().getStackTrace()[1].getMethodName(), ex.getMessage(), ex);
             return null;
         }
     }
@@ -327,7 +327,7 @@ public class DaoBase<T> {
             em.close();
             return record;
         } catch (Exception ex) {
-            App.showException(Thread.currentThread().getStackTrace()[1].getMethodName(), ex.getMessage(), ex);
+            //   App.showException(Thread.currentThread().getStackTrace()[1].getMethodName(), ex.getMessage(), ex);
             return null;
         }
     }
@@ -348,7 +348,7 @@ public class DaoBase<T> {
             em.close();
             return result;
         } catch (Exception ex) {
-            App.showException(Thread.currentThread().getStackTrace()[1].getMethodName(), ex.getMessage(), ex);
+            //     App.showException(Thread.currentThread().getStackTrace()[1].getMethodName(), ex.getMessage(), ex);
             return null;
         }
     }
@@ -362,7 +362,7 @@ public class DaoBase<T> {
             em.close();
             return record;
         } catch (Exception ex) {
-            App.showException(Thread.currentThread().getStackTrace()[1].getMethodName(), ex.getMessage(), ex);
+            //      App.showException(Thread.currentThread().getStackTrace()[1].getMethodName(), ex.getMessage(), ex);
             return null;
         }
     }
@@ -382,7 +382,7 @@ public class DaoBase<T> {
             em.close();
             return result;
         } catch (Exception ex) {
-            App.showException(Thread.currentThread().getStackTrace()[1].getMethodName(), ex.getMessage(), ex);
+            //      App.showException(Thread.currentThread().getStackTrace()[1].getMethodName(), ex.getMessage(), ex);
             return null;
         }
     }
@@ -402,7 +402,7 @@ public class DaoBase<T> {
             em.close();
             return result;
         } catch (Exception ex) {
-            App.showException(Thread.currentThread().getStackTrace()[1].getMethodName(), ex.getMessage(), ex);
+            //       App.showException(Thread.currentThread().getStackTrace()[1].getMethodName(), ex.getMessage(), ex);
             return null;
         }
     }

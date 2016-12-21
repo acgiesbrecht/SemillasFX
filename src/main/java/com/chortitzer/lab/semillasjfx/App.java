@@ -3,13 +3,12 @@ package com.chortitzer.lab.semillasjfx;
 import java.io.InputStream;
 import java.io.PrintWriter;
 import java.io.StringWriter;
-import java.util.HashMap;
-import java.util.Map;
 import java.util.Properties;
 import javafx.application.Application;
 import static javafx.application.Application.launch;
+import javafx.application.Platform;
+import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Label;
@@ -21,6 +20,7 @@ import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Priority;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
+import javafx.stage.WindowEvent;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 import org.apache.logging.log4j.LogManager;
@@ -31,6 +31,7 @@ public class App extends Application {
     private static final Logger LOGGER = LogManager.getLogger(App.class);
     public static EntityManagerFactory factory = Persistence.createEntityManagerFactory("semillasPU");
     private static final BorderPane root = new BorderPane();
+    public static Stage mainStage;
 
     /**
      * Just a root getter for the controller to use
@@ -55,8 +56,17 @@ public class App extends Application {
         Properties prop = new Properties();
         prop.load(resourceAsStream);
 
+        stage.setOnCloseRequest(new EventHandler<WindowEvent>() {
+            @Override
+            public void handle(WindowEvent t) {
+                Platform.exit();
+                System.exit(0);
+            }
+        });
+
         stage.setMaximized(true);
         stage.setTitle("Semillas " + prop.getProperty("project.version") + "." + prop.getProperty("project.build"));
+        mainStage = stage;
         stage.show();
 
     }
