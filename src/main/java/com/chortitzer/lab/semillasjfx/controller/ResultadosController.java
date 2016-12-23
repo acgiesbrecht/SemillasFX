@@ -7,17 +7,21 @@ package com.chortitzer.lab.semillasjfx.controller;
 
 import com.chortitzer.lab.semillasjfx.App;
 import com.chortitzer.lab.semillasjfx.DaoBase;
-import com.chortitzer.lab.semillasjfx.domain.LabMuestrasSemillas;
 import com.chortitzer.lab.semillasjfx.domain.LabSemillasResultados;
+import com.chortitzer.lab.semillasjfx.utils.Utils;
 import com.panemu.tiwulfx.common.TableCriteria;
 import com.panemu.tiwulfx.common.TableData;
 import com.panemu.tiwulfx.dialog.MessageDialogBuilder;
 import com.panemu.tiwulfx.form.Form;
+import com.panemu.tiwulfx.table.LocalDateColumn;
+import com.panemu.tiwulfx.table.NumberColumn;
 import com.panemu.tiwulfx.table.TableControl;
 import com.panemu.tiwulfx.table.TableController;
+import com.panemu.tiwulfx.table.TextColumn;
 import java.awt.Desktop;
 import java.io.File;
 import java.io.IOException;
+import java.math.BigDecimal;
 import java.net.URL;
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -38,10 +42,12 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
+import javax.swing.JOptionPane;
 import net.sf.jasperreports.engine.JasperCompileManager;
 import net.sf.jasperreports.engine.JasperExportManager;
 import net.sf.jasperreports.engine.JasperFillManager;
 import net.sf.jasperreports.engine.JasperPrint;
+import net.sf.jasperreports.engine.JasperPrintManager;
 import net.sf.jasperreports.engine.JasperReport;
 
 /**
@@ -61,27 +67,73 @@ public class ResultadosController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        Button btnPrint = new Button("Imprimir");
-        btnPrint.setGraphic(new ImageView(new Image(TableControl.class.getResourceAsStream("/images/print.png"))));
-        btnPrint.setOnAction(new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent event) {
+        try {
+            masterTable.setController(cntlLabSemillasResultados);
+            masterTable.setRecordClass(LabSemillasResultados.class);
 
-            }
-        });
-        masterTable.addButton(btnPrint);
-        Button btnPdf = new Button("Ver como PDF");
-        btnPdf.setGraphic(new ImageView(new Image(TableControl.class.getResourceAsStream("/images/pdf.png"))));
-        btnPdf.setOnAction(new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent event) {
+            Button btnPrint = new Button("Imprimir");
+            btnPrint.setGraphic(new ImageView(new Image(TableControl.class.getResourceAsStream("/images/print.png"))));
+            btnPrint.setOnAction(new EventHandler<ActionEvent>() {
+                @Override
+                public void handle(ActionEvent event) {
+                    print();
+                }
+            });
+            masterTable.addButton(btnPrint);
+            Button btnPdf = new Button("Ver como PDF");
+            btnPdf.setGraphic(new ImageView(new Image(TableControl.class.getResourceAsStream("/images/pdf.png"))));
+            btnPdf.setOnAction(new EventHandler<ActionEvent>() {
+                @Override
+                public void handle(ActionEvent event) {
+                    showPdf();
+                }
+            });
+            masterTable.addButton(btnPdf);
 
-            }
-        });
-        masterTable.addButton(btnPdf);
+            NumberColumn<LabSemillasResultados, Integer> cId = new NumberColumn<>("idMuestra", Integer.class);
+            cId.setText("ID");
+            cId.setEditable(false);
 
-        masterTable.setController(cntlLabSemillasResultados);
-        masterTable.setRecordClass(LabSemillasResultados.class);
+            LocalDateColumn<LabSemillasResultados> cFechaAnalisis = new LocalDateColumn<>("fechaAnalisis");
+            cId.setText("fecha de Analsis");
+
+            NumberColumn<LabSemillasResultados, BigDecimal> cSemillasPuras = new NumberColumn<>("semillasPuras", BigDecimal.class);
+            cSemillasPuras.setText("Semillas Puras");
+
+            TextColumn<LabSemillasResultados> cMateriaInerteDescripcion1 = new TextColumn<>("materiaInerteDescripcion1");
+            cMateriaInerteDescripcion1.setText("Materia Inerte Descripcion 1");
+
+            NumberColumn<LabSemillasResultados, BigDecimal> cMateriaInerteValor1 = new NumberColumn<>("materiaInerteValor1", BigDecimal.class);
+            cMateriaInerteValor1.setText("Materia Inerte Valor 1");
+
+            TextColumn<LabSemillasResultados> cMateriaInerteDescripcion2 = new TextColumn<>("materiaInerteDescripcion2");
+            cMateriaInerteDescripcion2.setText("Materia Inerte Descripcion 2");
+
+            NumberColumn<LabSemillasResultados, BigDecimal> cMateriaInerteValor2 = new NumberColumn<>("materiaInerteValor2", BigDecimal.class);
+            cMateriaInerteValor2.setText("Materia Inerte Valor 2");
+
+            TextColumn<LabSemillasResultados> cMateriaInerteDescripcion3 = new TextColumn<>("materiaInerteDescripcion3");
+            cMateriaInerteDescripcion3.setText("Materia Inerte Descripcion 3");
+
+            NumberColumn<LabSemillasResultados, BigDecimal> cMateriaInerteValor3 = new NumberColumn<>("materiaInerteValor3", BigDecimal.class);
+            cMateriaInerteValor3.setText("Materia Inerte Valor 3");
+
+            TextColumn<LabSemillasResultados> cMateriaInerteDescripcion4 = new TextColumn<>("materiaInerteDescripcion4");
+            cMateriaInerteDescripcion4.setText("Materia Inerte Descripcion 4");
+
+            NumberColumn<LabSemillasResultados, BigDecimal> cMateriaInerteValor4 = new NumberColumn<>("materiaInerteValor4", BigDecimal.class);
+            cMateriaInerteValor4.setText("Materia Inerte Valor 4");
+
+            masterTable.addColumn(cId, cFechaAnalisis, cSemillasPuras,
+                    cMateriaInerteDescripcion1, cMateriaInerteValor1,
+                    cMateriaInerteDescripcion2, cMateriaInerteValor2,
+                    cMateriaInerteDescripcion3, cMateriaInerteValor3,
+                    cMateriaInerteDescripcion4, cMateriaInerteValor4);
+
+            masterTable.reload();
+        } catch (Exception ex) {
+            Utils.showException(ex.toString(), ex.getMessage(), ex);
+        }
     }
 
     private final TableController<LabSemillasResultados> cntlLabSemillasResultados = new TableController<LabSemillasResultados>() {
@@ -94,32 +146,33 @@ public class ResultadosController implements Initializable {
             return daoLabSemillasResultados.fetch(startIndex, filteredColumns, sortedColumns, sortingOrders, maxResult);
         }
 
-        /*@Override
+        @Override
         public LabSemillasResultados preInsert(LabSemillasResultados newRecord) {
-            showFacturasCompraEdit(newRecord, Form.Mode.INSERT);
+            MessageDialogBuilder.info().message("No se pueden agregar resultados. Se asignan automaticamente a la muestra.").show(null);
             return null;
-        }*/
+        }
+
         @Override
         public boolean canEdit(LabSemillasResultados selectedRecord) {
             if (selectedRecord == null) {
-                MessageDialogBuilder.error().message("Please select a record to edit.").show(null);
+                MessageDialogBuilder.error().message("Debe seleccionar un registro para editrlo.").show(null);
                 return false;
             }
-            showFacturasCompraEdit(selectedRecord, Form.Mode.EDIT);
+            showLabSemillasResultados(selectedRecord, Form.Mode.EDIT);
             return false;
         }
 
         @Override
         public void doubleClick(LabSemillasResultados record) {
-            showFacturasCompraEdit(record, Form.Mode.READ);
+            showLabSemillasResultados(record, Form.Mode.READ);
         }
 
         @Override
         public void delete(List<LabSemillasResultados> records) {
-            daoLabSemillasResultados.delete(records);
+            MessageDialogBuilder.info().message("No se pueden eliminar resultados. Se eliminan automaticamente al eliminar la muestra.").show(null);
         }
 
-        private void showFacturasCompraEdit(LabSemillasResultados factura, Form.Mode mode) {
+        private void showLabSemillasResultados(LabSemillasResultados factura, Form.Mode mode) {
             try {
                 if (dialogStage == null) {
 
@@ -142,7 +195,7 @@ public class ResultadosController implements Initializable {
                 resultadosEditController.setMode(mode);
                 dialogStage.show();
             } catch (Exception ex) {
-                App.showException(Thread.currentThread().getStackTrace()[1].getMethodName(), ex.getMessage(), ex);
+                Utils.showException(ex.toString(), ex.getMessage(), ex);
             }
         }
     };
@@ -167,11 +220,31 @@ public class ResultadosController implements Initializable {
                     File myFile = new File(file);
                     Desktop.getDesktop().open(myFile);
                 } catch (IOException ex) {
-                    ex.printStackTrace();
+                    Utils.showException(ex.toString(), ex.getMessage(), ex);
                 }
             }
         } catch (Exception ex) {
-            ex.printStackTrace();
+            Utils.showException(ex.toString(), ex.getMessage(), ex);
+        }
+    }
+
+    private void print() {
+        try {
+            Connection conn = DriverManager.getConnection("jdbc:postgresql://192.168.3.121:5432/industria_lab", "postgres", "123456");
+            Map parameters = new HashMap();
+            parameters.put("pID", Integer.parseInt(masterTable.getSelectedItem().getIdMuestra().toString()));
+            parameters.put("logo_lab", getClass().getResourceAsStream("/reports/chortilab_logo.png"));
+            parameters.put("logo_cch", getClass().getResourceAsStream("/reports/logo_cch.png"));
+
+            JasperReport report = JasperCompileManager.compileReport(getClass().getResourceAsStream("/reports/CertificadoSemillas.jrxml"));
+
+            JasperPrint jasperPrint = JasperFillManager.fillReport(report, parameters, conn);
+            //JasperViewer jReportsViewer = new JasperViewer(jasperPrint, false);
+            //jReportsViewer.setVisible(true);
+            JasperPrintManager.printReport(jasperPrint, false);
+
+        } catch (Exception ex) {
+            Utils.showException(ex.toString(), ex.getMessage(), ex);
         }
     }
 

@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- Created with Jaspersoft Studio version 6.2.0.final using JasperReports Library version 6.2.0  -->
-<!-- 2016-04-25T16:11:51 -->
+<!-- Created with Jaspersoft Studio version 6.3.1.final using JasperReports Library version 6.3.1  -->
+<!-- 2016-12-22T11:09:57 -->
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="CertificadoSemillas" language="groovy" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="e488d181-8d20-49c3-a4dc-74fd78c356c5">
-	<property name="ireport.zoom" value="1.331000000000002"/>
-	<property name="ireport.x" value="0"/>
-	<property name="ireport.y" value="0"/>
-	<parameter name="pID" class="java.lang.Integer"/>
-	<parameter name="logo_cch" class="java.io.InputStream"/>
-	<parameter name="logo_lab" class="java.io.InputStream"/>
-	<queryString language="SQL">
+    <property name="ireport.zoom" value="1.331000000000002"/>
+    <property name="ireport.x" value="0"/>
+    <property name="ireport.y" value="0"/>
+    <parameter name="pID" class="java.lang.Integer"/>
+    <parameter name="logo_cch" class="java.io.InputStream"/>
+    <parameter name="logo_lab" class="java.io.InputStream"/>
+    <queryString language="SQL">
 		<![CDATA[SELECT lab_clientes.id,
 	lab_clientes.nombre AS lab_clientes_NOMBRE,
 	lab_clientes.direccion AS lab_clientes_DIRECCION,
@@ -59,977 +59,977 @@ FROM lab_clientes INNER JOIN lab_muestras_semillas lab_muestras_semillas ON
 	 lab_muestras_semillas.id_muestreador = lab_semillas_muestreadores.id
 WHERE
 	 lab_muestras_semillas.id = $P{pID}]]>
-	</queryString>
-	<field name="lab_clientes_NOMBRE" class="java.lang.String"/>
-	<field name="lab_clientes_DIRECCION" class="java.lang.String"/>
-	<field name="lab_clientes_CEDULA" class="java.lang.Integer"/>
-	<field name="lab_muestras_semillas_id" class="java.lang.Integer"/>
-	<field name="lab_muestras_semillas_identificacion_original" class="java.lang.String"/>
-	<field name="lab_muestras_semillas_fecha_entrada" class="java.sql.Timestamp"/>
-	<field name="lab_muestras_semillas_zafra" class="java.lang.String"/>
-	<field name="lab_muestras_semillas_procedencia" class="java.lang.String"/>
-	<field name="lab_muestras_semillas_muestra_o_lote" class="java.lang.Integer"/>
-	<field name="lab_muestras_semillas_lote_peso" class="java.lang.Integer"/>
-	<field name="lab_muestras_semillas_lote_cantidad_bolsas" class="java.lang.String"/>
-	<field name="lab_muestras_semillas_fecha_muestreo" class="java.sql.Timestamp"/>
-	<field name="lab_semillas_categorias_descripcion" class="java.lang.String"/>
-	<field name="lab_semillas_resultados_fecha_analisis" class="java.sql.Timestamp"/>
-	<field name="lab_semillas_resultados_semillas_puras" class="java.math.BigDecimal"/>
-	<field name="lab_semillas_resultados_materia_inerte_descripcion_1" class="java.lang.String"/>
-	<field name="lab_semillas_resultados_materia_inerte_valor_1" class="java.math.BigDecimal"/>
-	<field name="lab_semillas_resultados_materia_inerte_descripcion_2" class="java.lang.String"/>
-	<field name="lab_semillas_resultados_otras_semillas_valor" class="java.math.BigDecimal"/>
-	<field name="lab_semillas_resultados_otras_semillas_descripcion" class="java.lang.String"/>
-	<field name="lab_semillas_resultados_materia_inerte_valor_2" class="java.math.BigDecimal"/>
-	<field name="lab_semillas_resultados_plantas_normales" class="java.math.BigDecimal"/>
-	<field name="lab_semillas_resultados_semillas_duras" class="java.math.BigDecimal"/>
-	<field name="lab_semillas_resultados_plantas_anormales" class="java.math.BigDecimal"/>
-	<field name="lab_semillas_resultados_semillas_muertas" class="java.math.BigDecimal"/>
-	<field name="lab_semillas_resultados_cantidad_dias" class="java.lang.Integer"/>
-	<field name="lab_semillas_resultados_humedad" class="java.math.BigDecimal"/>
-	<field name="lab_semillas_resultados_temperatura" class="java.lang.String"/>
-	<field name="lab_semillas_resultados_tratamiento" class="java.lang.String"/>
-	<field name="lab_semillas_resultados_sustrato" class="java.lang.String"/>
-	<field name="lab_semillas_resultados_semillas_viables" class="java.math.BigDecimal"/>
-	<field name="lab_semillas_especies_especie" class="java.lang.String"/>
-	<field name="lab_semillas_especies_variedad" class="java.lang.String"/>
-	<field name="lab_muestras_semillas_id_muestreador" class="java.lang.Integer"/>
-	<field name="lab_semillas_muestreadores_id" class="java.lang.Integer"/>
-	<field name="lab_semillas_muestreadores_nombre" class="java.lang.String"/>
-	<field name="lab_semillas_resultados_materia_inerte_descripcion_3" class="java.lang.String"/>
-	<field name="lab_semillas_resultados_materia_inerte_valor_3" class="java.math.BigDecimal"/>
-	<field name="lab_semillas_resultados_materia_inerte_descripcion_4" class="java.lang.String"/>
-	<field name="lab_semillas_resultados_materia_inerte_valor_4" class="java.math.BigDecimal"/>
-	<field name="lab_semillas_resultados_observaciones" class="java.lang.String"/>
-	<background>
-		<band splitType="Stretch"/>
-	</background>
-	<title>
-		<band height="86" splitType="Stretch">
-			<image>
-				<reportElement x="410" y="10" width="56" height="25" uuid="43128d03-d388-451f-b183-e65174a96c3d"/>
-				<imageExpression><![CDATA[$P{logo_lab}]]></imageExpression>
-			</image>
-			<image>
-				<reportElement x="62" y="0" width="67" height="41" uuid="2a796f1b-7719-44c4-923e-30eabdfe9194"/>
-				<imageExpression><![CDATA[$P{logo_cch}]]></imageExpression>
-			</image>
-			<staticText>
-				<reportElement x="62" y="0" width="404" height="27" uuid="7245da50-9fe9-47c3-a4a8-034d6896ca6e"/>
-				<textElement textAlignment="Center" verticalAlignment="Bottom">
-					<font size="13" isBold="false" isItalic="true"/>
-				</textElement>
-				<text><![CDATA[Laboratorio de Análisis de Semillas]]></text>
-			</staticText>
-			<staticText>
-				<reportElement x="80" y="27" width="386" height="25" uuid="e58bc24c-8a52-4daf-a52d-fdd6b3dc0c2f"/>
-				<textElement textAlignment="Center">
-					<font size="12" isBold="true" isItalic="false"/>
-				</textElement>
-				<text><![CDATA[RNLS Nº 07]]></text>
-			</staticText>
-			<staticText>
-				<reportElement x="120" y="59" width="296" height="27" uuid="f53761f5-da1f-46a4-af2e-27bdcda64016"/>
-				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font size="14" isBold="true"/>
-				</textElement>
-				<text><![CDATA[CERTIFICADO DE ANÁLISIS DE SEMILLAS]]></text>
-			</staticText>
-		</band>
-	</title>
-	<pageHeader>
-		<band height="146" splitType="Stretch">
-			<textField>
-				<reportElement x="162" y="32" width="105" height="15" uuid="31072421-fb4f-4449-880c-c13031de5181"/>
-				<textElement verticalAlignment="Middle">
-					<font size="8"/>
-				</textElement>
-				<textFieldExpression><![CDATA[$F{lab_muestras_semillas_id}]]></textFieldExpression>
-			</textField>
-			<staticText>
-				<reportElement x="61" y="32" width="100" height="15" uuid="456eec95-119c-4b89-9cf0-db80e8391f15"/>
-				<textElement verticalAlignment="Middle">
-					<font size="8" isBold="true"/>
-				</textElement>
-				<text><![CDATA[Muestra Nº:]]></text>
-			</staticText>
-			<staticText>
-				<reportElement x="61" y="47" width="100" height="15" uuid="377c51b0-7288-4039-9a2c-2542f28fb015"/>
-				<textElement verticalAlignment="Middle">
-					<font size="8" isBold="true"/>
-				</textElement>
-				<text><![CDATA[Cliente:]]></text>
-			</staticText>
-			<textField>
-				<reportElement x="162" y="47" width="105" height="15" uuid="5ebebe87-706c-46a3-bf71-6857cbce7f75"/>
-				<textElement verticalAlignment="Middle">
-					<font size="8"/>
-				</textElement>
-				<textFieldExpression><![CDATA[$F{lab_clientes_NOMBRE}]]></textFieldExpression>
-			</textField>
-			<staticText>
-				<reportElement x="61" y="77" width="100" height="15" uuid="15870b5e-aa00-46e3-b795-89f87f2214d3"/>
-				<textElement verticalAlignment="Middle">
-					<font size="8" isBold="true"/>
-				</textElement>
-				<text><![CDATA[Categoría:]]></text>
-			</staticText>
-			<staticText>
-				<reportElement x="61" y="62" width="100" height="15" uuid="5163aad6-7156-4e82-8dab-1b7b04341c7c"/>
-				<textElement verticalAlignment="Middle">
-					<font size="8" isBold="true"/>
-				</textElement>
-				<text><![CDATA[Género/Especie:]]></text>
-			</staticText>
-			<staticText>
-				<reportElement x="61" y="92" width="100" height="15" uuid="b189ba85-e9bb-4c44-85e6-a5085cdfcc7c"/>
-				<textElement verticalAlignment="Middle">
-					<font size="8" isBold="true"/>
-				</textElement>
-				<text><![CDATA[Fecha Muestreo:]]></text>
-			</staticText>
-			<staticText>
-				<reportElement x="61" y="107" width="100" height="15" uuid="c6fc46d2-a8d5-443a-be97-3fe11e795123"/>
-				<textElement verticalAlignment="Middle">
-					<font size="8" isBold="true"/>
-				</textElement>
-				<text><![CDATA[Peso de Lote (Kg):]]></text>
-			</staticText>
-			<staticText>
-				<reportElement x="61" y="122" width="100" height="15" uuid="f1b8489a-a5f7-4289-8f3c-82b5094f8fe2"/>
-				<textElement verticalAlignment="Middle">
-					<font size="8" isBold="true"/>
-				</textElement>
-				<text><![CDATA[Cantidad de bolsas:]]></text>
-			</staticText>
-			<textField>
-				<reportElement x="162" y="62" width="105" height="15" uuid="9ac63016-e80a-416a-bb0c-3c353802120b"/>
-				<textElement verticalAlignment="Middle">
-					<font size="8"/>
-				</textElement>
-				<textFieldExpression><![CDATA[$F{lab_semillas_especies_especie}]]></textFieldExpression>
-			</textField>
-			<textField>
-				<reportElement x="162" y="77" width="105" height="15" uuid="ae661c84-e6d7-4568-aec9-c80fe5bdfdd9"/>
-				<textElement verticalAlignment="Middle">
-					<font size="8"/>
-				</textElement>
-				<textFieldExpression><![CDATA[$F{lab_semillas_categorias_descripcion}]]></textFieldExpression>
-			</textField>
-			<staticText>
-				<reportElement x="267" y="32" width="100" height="15" uuid="c4b5c0de-f233-48ec-88db-108d29be24ab"/>
-				<textElement verticalAlignment="Middle">
-					<font size="8" isBold="true"/>
-				</textElement>
-				<text><![CDATA[Procedencia:]]></text>
-			</staticText>
-			<staticText>
-				<reportElement x="267" y="47" width="100" height="15" uuid="c10f06dc-c026-4a53-8099-e3061cb75dad"/>
-				<textElement verticalAlignment="Middle">
-					<font size="8" isBold="true"/>
-				</textElement>
-				<text><![CDATA[Variedad:]]></text>
-			</staticText>
-			<staticText>
-				<reportElement x="267" y="77" width="100" height="15" uuid="6ed661cd-6ae0-49f4-96f8-8cc341394788"/>
-				<textElement verticalAlignment="Middle">
-					<font size="8" isBold="true"/>
-				</textElement>
-				<text><![CDATA[Identif. original:]]></text>
-			</staticText>
-			<staticText>
-				<reportElement x="267" y="62" width="100" height="15" uuid="723e77a6-1aba-4005-8582-f92310f50e2d"/>
-				<textElement verticalAlignment="Middle">
-					<font size="8" isBold="true"/>
-				</textElement>
-				<text><![CDATA[Zafra:]]></text>
-			</staticText>
-			<staticText>
-				<reportElement x="267" y="92" width="100" height="15" uuid="81fdd24a-652e-47ef-bc92-da5bc443d300"/>
-				<textElement verticalAlignment="Middle">
-					<font size="8" isBold="true"/>
-				</textElement>
-				<text><![CDATA[Fecha de Entrada:]]></text>
-			</staticText>
-			<staticText>
-				<reportElement x="267" y="107" width="100" height="15" uuid="148c9b0e-b279-454f-910a-dade10c5a99b"/>
-				<textElement verticalAlignment="Middle">
-					<font size="8" isBold="true"/>
-				</textElement>
-				<text><![CDATA[Fecha de Análisis:]]></text>
-			</staticText>
-			<textField pattern="dd/MM/yyyy">
-				<reportElement x="367" y="107" width="100" height="15" uuid="ebd1a8af-9148-476e-9912-2c7e8b56ac8a"/>
-				<textElement verticalAlignment="Middle">
-					<font size="8"/>
-				</textElement>
-				<textFieldExpression><![CDATA[$F{lab_semillas_resultados_fecha_analisis} != null ? $F{lab_semillas_resultados_fecha_analisis} : "-"]]></textFieldExpression>
-			</textField>
-			<textField pattern="dd/MM/yyyy">
-				<reportElement x="367" y="92" width="100" height="15" uuid="44390c5d-3087-4ec2-801f-d32b34de3874"/>
-				<textElement verticalAlignment="Middle">
-					<font size="8"/>
-				</textElement>
-				<textFieldExpression><![CDATA[$F{lab_muestras_semillas_fecha_entrada} != null ? $F{lab_muestras_semillas_fecha_entrada} : "-"]]></textFieldExpression>
-			</textField>
-			<textField>
-				<reportElement x="367" y="77" width="100" height="15" uuid="59dfe06a-1ed2-49fa-b01a-c0fde5e4af45"/>
-				<textElement verticalAlignment="Middle">
-					<font size="8"/>
-				</textElement>
-				<textFieldExpression><![CDATA[$F{lab_muestras_semillas_identificacion_original} != null ? $F{lab_muestras_semillas_identificacion_original} : "-"]]></textFieldExpression>
-			</textField>
-			<textField>
-				<reportElement x="367" y="62" width="100" height="15" uuid="0af4040d-fce4-4eb9-950f-eb5e90a08412"/>
-				<textElement verticalAlignment="Middle">
-					<font size="8"/>
-				</textElement>
-				<textFieldExpression><![CDATA[$F{lab_muestras_semillas_zafra} != null ? $F{lab_muestras_semillas_zafra} : "-"]]></textFieldExpression>
-			</textField>
-			<textField>
-				<reportElement x="367" y="32" width="100" height="15" uuid="1a0885c2-8102-43b9-a369-ffff192b798a">
-					<property name="local_mesure_unity" value="pixel"/>
-					<property name="local_mesure_unitheight" value="pixel"/>
-					<property name="com.jaspersoft.studio.unit.height" value="px"/>
-				</reportElement>
-				<textElement verticalAlignment="Middle">
-					<font size="8"/>
-				</textElement>
-				<textFieldExpression><![CDATA[$F{lab_muestras_semillas_procedencia} != null ? $F{lab_muestras_semillas_procedencia} : "-"]]></textFieldExpression>
-			</textField>
-			<textField>
-				<reportElement x="161" y="107" width="105" height="15" uuid="18a8630e-404f-4e21-8228-2b9efe212ebd"/>
-				<textElement verticalAlignment="Middle">
-					<font size="8"/>
-				</textElement>
-				<textFieldExpression><![CDATA[$F{lab_muestras_semillas_lote_peso} != null ? $F{lab_muestras_semillas_lote_peso} : "-"]]></textFieldExpression>
-			</textField>
-			<textField pattern="dd/MM/yyyy">
-				<reportElement x="162" y="92" width="105" height="15" uuid="46cb6a22-9346-4f48-bbde-d6c4952ba09d"/>
-				<textElement verticalAlignment="Middle">
-					<font size="8"/>
-				</textElement>
-				<textFieldExpression><![CDATA[$F{lab_muestras_semillas_fecha_muestreo} != null ? $F{lab_muestras_semillas_fecha_muestreo} : "-"]]></textFieldExpression>
-			</textField>
-			<textField>
-				<reportElement x="162" y="122" width="105" height="15" uuid="f139d01d-74d3-4e57-b0d6-e4778a00977f"/>
-				<textElement verticalAlignment="Middle">
-					<font size="8"/>
-				</textElement>
-				<textFieldExpression><![CDATA[$F{lab_muestras_semillas_lote_cantidad_bolsas} != null ? $F{lab_muestras_semillas_lote_cantidad_bolsas} : "-"]]></textFieldExpression>
-			</textField>
-			<textField>
-				<reportElement x="367" y="47" width="100" height="15" uuid="70e70e0c-9285-4dcf-b3f8-47c2a4d0e4ef"/>
-				<textElement verticalAlignment="Middle">
-					<font size="8"/>
-				</textElement>
-				<textFieldExpression><![CDATA[$F{lab_semillas_especies_variedad} != null ? $F{lab_semillas_especies_variedad} : "-"]]></textFieldExpression>
-			</textField>
-			<textField>
-				<reportElement x="62" y="0" width="404" height="20" uuid="2aeae9a6-68a2-44ad-a67f-fbdb75af753a"/>
-				<textElement textAlignment="Center"/>
-				<textFieldExpression><![CDATA["Nº " + $F{lab_muestras_semillas_id}]]></textFieldExpression>
-			</textField>
-			<textField pattern="dd/MM/yyyy">
-				<reportElement x="367" y="122" width="100" height="15" uuid="3b5b5561-07f8-4902-b818-89122502e0a8"/>
-				<textElement verticalAlignment="Middle">
-					<font size="8"/>
-				</textElement>
-				<textFieldExpression><![CDATA[$F{lab_muestras_semillas_id_muestreador} != null ? $F{lab_semillas_muestreadores_nombre}+" / " + $F{lab_semillas_muestreadores_id} : "-"]]></textFieldExpression>
-			</textField>
-			<staticText>
-				<reportElement x="267" y="122" width="100" height="15" uuid="4ca21d69-5321-4567-95c7-67a4a51ebef3"/>
-				<textElement verticalAlignment="Middle">
-					<font size="8" isBold="true"/>
-				</textElement>
-				<text><![CDATA[Muestreado por:]]></text>
-			</staticText>
-		</band>
-	</pageHeader>
-	<detail>
-		<band height="437" splitType="Stretch">
-			<staticText>
-				<reportElement x="61" y="0" width="406" height="20" uuid="b815b021-cccf-41d0-acaf-3de560a2587c"/>
-				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font size="11" isBold="false"/>
-				</textElement>
-				<text><![CDATA[Resultados de Análisis]]></text>
-			</staticText>
-			<staticText>
-				<reportElement x="60" y="20" width="400" height="14" uuid="90ef929c-cb56-4063-8f7b-a774ae238517"/>
-				<textElement verticalAlignment="Middle">
-					<font size="8" isBold="false"/>
-				</textElement>
-				<text><![CDATA[Análisis de Pureza:]]></text>
-			</staticText>
-			<staticText>
-				<reportElement x="62" y="115" width="400" height="16" uuid="21b823c1-9d5c-4a32-b9b1-87804da79f1b"/>
-				<textElement verticalAlignment="Middle">
-					<font size="8" isBold="true"/>
-				</textElement>
-				<text><![CDATA[Análisis de Germinación:]]></text>
-			</staticText>
-			<staticText>
-				<reportElement x="60" y="215" width="400" height="14" uuid="53583ff7-dd4d-425c-a095-5f2615f0be48"/>
-				<textElement verticalAlignment="Middle">
-					<font size="8" isBold="false"/>
-				</textElement>
-				<text><![CDATA[Análisis de Humedad:]]></text>
-			</staticText>
-			<staticText>
-				<reportElement x="60" y="250" width="400" height="16" uuid="0ebd6abb-4ff6-471e-829a-0668d20cfab8"/>
-				<textElement verticalAlignment="Middle">
-					<font size="8" isBold="false"/>
-				</textElement>
-				<text><![CDATA[Otras Determinaciones:]]></text>
-			</staticText>
-			<staticText>
-				<reportElement x="60" y="34" width="100" height="14" uuid="01760541-dcab-4106-919f-53316aabc722"/>
-				<box leftPadding="4" rightPadding="4">
-					<pen lineWidth="1.0"/>
-					<topPen lineWidth="1.0"/>
-					<leftPen lineWidth="1.0"/>
-					<bottomPen lineWidth="1.0"/>
-					<rightPen lineWidth="1.0"/>
-				</box>
-				<textElement verticalAlignment="Middle">
-					<font size="8" isBold="false"/>
-				</textElement>
-				<text><![CDATA[Semillas Puras]]></text>
-			</staticText>
-			<textField pattern="#,##0.00 %">
-				<reportElement x="60" y="48" width="100" height="14" uuid="658e0fb6-a479-4336-b2c3-0f3cc603b257"/>
-				<box leftPadding="4" rightPadding="4">
-					<pen lineWidth="1.0"/>
-					<topPen lineWidth="1.0"/>
-					<leftPen lineWidth="1.0"/>
-					<bottomPen lineWidth="1.0"/>
-					<rightPen lineWidth="1.0"/>
-				</box>
-				<textElement textAlignment="Right" verticalAlignment="Middle">
-					<font size="8"/>
-				</textElement>
-				<textFieldExpression><![CDATA[$F{lab_semillas_resultados_semillas_puras} != null ? $F{lab_semillas_resultados_semillas_puras}/100 : "-"]]></textFieldExpression>
-			</textField>
-			<staticText>
-				<reportElement x="160" y="34" width="300" height="14" uuid="7c7be08b-5e79-4bd1-b157-c1fbceb9738b"/>
-				<box leftPadding="4" rightPadding="4">
-					<pen lineWidth="1.0"/>
-					<topPen lineWidth="1.0"/>
-					<leftPen lineWidth="1.0"/>
-					<bottomPen lineWidth="1.0"/>
-					<rightPen lineWidth="1.0"/>
-				</box>
-				<textElement verticalAlignment="Middle">
-					<font size="8" isBold="false"/>
-				</textElement>
-				<text><![CDATA[Materia inerte]]></text>
-			</staticText>
-			<textField pattern="#,##0.00 %">
-				<reportElement x="160" y="62" width="75" height="14" uuid="126c30cc-f661-445e-bb46-6ebb4e5820e6"/>
-				<box leftPadding="4" rightPadding="4">
-					<pen lineWidth="1.0"/>
-					<topPen lineWidth="1.0"/>
-					<leftPen lineWidth="1.0"/>
-					<bottomPen lineWidth="1.0"/>
-					<rightPen lineWidth="1.0"/>
-				</box>
-				<textElement textAlignment="Right" verticalAlignment="Middle">
-					<font size="8"/>
-				</textElement>
-				<textFieldExpression><![CDATA[$F{lab_semillas_resultados_materia_inerte_descripcion_1} != null ? $F{lab_semillas_resultados_materia_inerte_descripcion_1} : "-"]]></textFieldExpression>
-			</textField>
-			<textField pattern="#,##0.00 %">
-				<reportElement x="160" y="48" width="75" height="14" uuid="59036e5e-9129-4224-b328-82640d98f449">
-					<property name="com.jaspersoft.studio.unit.width" value="pixel"/>
-				</reportElement>
-				<box leftPadding="4" rightPadding="4">
-					<pen lineWidth="1.0"/>
-					<topPen lineWidth="1.0"/>
-					<leftPen lineWidth="1.0"/>
-					<bottomPen lineWidth="1.0"/>
-					<rightPen lineWidth="1.0"/>
-				</box>
-				<textElement textAlignment="Right" verticalAlignment="Middle">
-					<font size="8"/>
-				</textElement>
-				<textFieldExpression><![CDATA[$F{lab_semillas_resultados_materia_inerte_valor_1} != null ? $F{lab_semillas_resultados_materia_inerte_valor_1}/100 : "-"]]></textFieldExpression>
-			</textField>
-			<textField pattern="#,##0.00 %">
-				<reportElement x="235" y="62" width="75" height="14" uuid="a4c6559f-2292-46b8-abf3-6107f0544b26"/>
-				<box leftPadding="4" rightPadding="4">
-					<pen lineWidth="1.0"/>
-					<topPen lineWidth="1.0"/>
-					<leftPen lineWidth="1.0"/>
-					<bottomPen lineWidth="1.0"/>
-					<rightPen lineWidth="1.0"/>
-				</box>
-				<textElement textAlignment="Right" verticalAlignment="Middle">
-					<font size="8"/>
-				</textElement>
-				<textFieldExpression><![CDATA[$F{lab_semillas_resultados_materia_inerte_descripcion_2} != null ? $F{lab_semillas_resultados_materia_inerte_descripcion_2} : "-"]]></textFieldExpression>
-			</textField>
-			<textField pattern="#,##0.00 %">
-				<reportElement x="235" y="48" width="75" height="14" uuid="345e37a2-0c88-49ff-906a-0d3295879cb0"/>
-				<box leftPadding="4" rightPadding="4">
-					<pen lineWidth="1.0"/>
-					<topPen lineWidth="1.0"/>
-					<leftPen lineWidth="1.0"/>
-					<bottomPen lineWidth="1.0"/>
-					<rightPen lineWidth="1.0"/>
-				</box>
-				<textElement textAlignment="Right" verticalAlignment="Middle">
-					<font size="8"/>
-				</textElement>
-				<textFieldExpression><![CDATA[$F{lab_semillas_resultados_materia_inerte_valor_2} != null ? $F{lab_semillas_resultados_materia_inerte_valor_2}/100 : "-"]]></textFieldExpression>
-			</textField>
-			<staticText>
-				<reportElement x="60" y="82" width="402" height="14" uuid="752fdd27-8c21-4f8e-a5a1-f1b372af3d11"/>
-				<box leftPadding="4" rightPadding="4">
-					<pen lineWidth="1.0"/>
-					<topPen lineWidth="0.0"/>
-					<leftPen lineWidth="0.0"/>
-					<bottomPen lineWidth="0.0"/>
-					<rightPen lineWidth="0.0"/>
-				</box>
-				<textElement verticalAlignment="Middle">
-					<font size="8" isBold="true"/>
-				</textElement>
-				<text><![CDATA[Otras Semillas]]></text>
-			</staticText>
-			<textField pattern="#,##0.00 %">
-				<reportElement x="60" y="96" width="78" height="14" uuid="672dbdcf-812b-43e7-86ae-f4a6dcd59eec"/>
-				<box leftPadding="4" rightPadding="4">
-					<pen lineWidth="1.0"/>
-					<topPen lineWidth="1.0"/>
-					<leftPen lineWidth="1.0"/>
-					<bottomPen lineWidth="1.0"/>
-					<rightPen lineWidth="1.0"/>
-				</box>
-				<textElement textAlignment="Right" verticalAlignment="Middle">
-					<font size="8"/>
-				</textElement>
-				<textFieldExpression><![CDATA[$F{lab_semillas_resultados_otras_semillas_valor} != null ? $F{lab_semillas_resultados_otras_semillas_valor}/100 : "-"]]></textFieldExpression>
-			</textField>
-			<textField pattern="#,##0.00 %">
-				<reportElement x="138" y="96" width="325" height="14" uuid="51b3be57-1167-47a4-ba73-5e45fcb7c792"/>
-				<box leftPadding="4" rightPadding="4">
-					<pen lineWidth="1.0"/>
-					<topPen lineWidth="1.0"/>
-					<leftPen lineWidth="1.0"/>
-					<bottomPen lineWidth="1.0"/>
-					<rightPen lineWidth="1.0"/>
-				</box>
-				<textElement textAlignment="Left" verticalAlignment="Middle">
-					<font size="8"/>
-				</textElement>
-				<textFieldExpression><![CDATA[$F{lab_semillas_resultados_otras_semillas_descripcion} != null ? $F{lab_semillas_resultados_otras_semillas_descripcion} : "-"]]></textFieldExpression>
-			</textField>
-			<staticText>
-				<reportElement x="62" y="131" width="77" height="24" uuid="713abee3-572f-4215-9ee6-1df45fed6d27"/>
-				<box leftPadding="4" rightPadding="4">
-					<pen lineWidth="1.0"/>
-					<topPen lineWidth="1.0"/>
-					<leftPen lineWidth="1.0"/>
-					<bottomPen lineWidth="1.0"/>
-					<rightPen lineWidth="1.0"/>
-				</box>
-				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font size="8" isBold="false"/>
-				</textElement>
-				<text><![CDATA[Plantas normales]]></text>
-			</staticText>
-			<textField pattern="#,##0.00 %">
-				<reportElement x="62" y="155" width="77" height="16" uuid="4ab9b428-daa9-499a-9fbe-9cade4682b43"/>
-				<box leftPadding="4" rightPadding="4">
-					<pen lineWidth="1.0"/>
-					<topPen lineWidth="1.0"/>
-					<leftPen lineWidth="1.0"/>
-					<bottomPen lineWidth="1.0"/>
-					<rightPen lineWidth="1.0"/>
-				</box>
-				<textElement textAlignment="Right" verticalAlignment="Middle">
-					<font size="8"/>
-				</textElement>
-				<textFieldExpression><![CDATA[$F{lab_semillas_resultados_plantas_normales} != null ? $F{lab_semillas_resultados_plantas_normales}/100 : "-"]]></textFieldExpression>
-			</textField>
-			<staticText>
-				<reportElement x="139" y="131" width="77" height="24" uuid="e39217fa-6d11-47b6-a08a-ee028132dbf9"/>
-				<box leftPadding="4" rightPadding="4">
-					<pen lineWidth="1.0"/>
-					<topPen lineWidth="1.0"/>
-					<leftPen lineWidth="1.0"/>
-					<bottomPen lineWidth="1.0"/>
-					<rightPen lineWidth="1.0"/>
-				</box>
-				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font size="8" isBold="false"/>
-				</textElement>
-				<text><![CDATA[Semillas duras]]></text>
-			</staticText>
-			<staticText>
-				<reportElement x="293" y="131" width="77" height="24" uuid="9402c106-241b-4f44-a032-ef57c82014e8"/>
-				<box leftPadding="4" rightPadding="4">
-					<pen lineWidth="1.0"/>
-					<topPen lineWidth="1.0"/>
-					<leftPen lineWidth="1.0"/>
-					<bottomPen lineWidth="1.0"/>
-					<rightPen lineWidth="1.0"/>
-				</box>
-				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font size="8" isBold="false"/>
-				</textElement>
-				<text><![CDATA[Semillas muertas]]></text>
-			</staticText>
-			<staticText>
-				<reportElement x="216" y="131" width="77" height="24" uuid="d090bebe-eba1-451a-be36-5d936b24bd08"/>
-				<box leftPadding="4" rightPadding="4">
-					<pen lineWidth="1.0"/>
-					<topPen lineWidth="1.0"/>
-					<leftPen lineWidth="1.0"/>
-					<bottomPen lineWidth="1.0"/>
-					<rightPen lineWidth="1.0"/>
-				</box>
-				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font size="8" isBold="false"/>
-				</textElement>
-				<text><![CDATA[Plantas anormales]]></text>
-			</staticText>
-			<staticText>
-				<reportElement x="370" y="131" width="92" height="24" uuid="c641c393-cbdc-4ce1-b420-7db0e1a48c41"/>
-				<box leftPadding="4" rightPadding="4">
-					<pen lineWidth="1.0"/>
-					<topPen lineWidth="1.0"/>
-					<leftPen lineWidth="1.0"/>
-					<bottomPen lineWidth="1.0"/>
-					<rightPen lineWidth="1.0"/>
-				</box>
-				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font size="8" isBold="false"/>
-				</textElement>
-				<text><![CDATA[Poder germinativo]]></text>
-			</staticText>
-			<textField pattern="#,##0.00 %">
-				<reportElement x="216" y="155" width="77" height="16" uuid="c8dad5ea-9971-48f5-be02-0ab7f5d0506e"/>
-				<box leftPadding="4" rightPadding="4">
-					<pen lineWidth="1.0"/>
-					<topPen lineWidth="1.0"/>
-					<leftPen lineWidth="1.0"/>
-					<bottomPen lineWidth="1.0"/>
-					<rightPen lineWidth="1.0"/>
-				</box>
-				<textElement textAlignment="Right" verticalAlignment="Middle">
-					<font size="8"/>
-				</textElement>
-				<textFieldExpression><![CDATA[$F{lab_semillas_resultados_plantas_anormales} != null ? $F{lab_semillas_resultados_plantas_anormales}/100 : "-"]]></textFieldExpression>
-			</textField>
-			<textField pattern="#,##0.00 %">
-				<reportElement x="139" y="155" width="77" height="16" uuid="8523fa09-4454-4183-a296-c3e971252501"/>
-				<box leftPadding="4" rightPadding="4">
-					<pen lineWidth="1.0"/>
-					<topPen lineWidth="1.0"/>
-					<leftPen lineWidth="1.0"/>
-					<bottomPen lineWidth="1.0"/>
-					<rightPen lineWidth="1.0"/>
-				</box>
-				<textElement textAlignment="Right" verticalAlignment="Middle">
-					<font size="8"/>
-				</textElement>
-				<textFieldExpression><![CDATA[$F{lab_semillas_resultados_semillas_duras} != null ? $F{lab_semillas_resultados_semillas_duras}/100 : "-"]]></textFieldExpression>
-			</textField>
-			<textField pattern="#,##0.00 %">
-				<reportElement x="293" y="155" width="77" height="16" uuid="1ade7864-99b9-4d19-89cb-836297ee9ed7"/>
-				<box leftPadding="4" rightPadding="4">
-					<pen lineWidth="1.0"/>
-					<topPen lineWidth="1.0"/>
-					<leftPen lineWidth="1.0"/>
-					<bottomPen lineWidth="1.0"/>
-					<rightPen lineWidth="1.0"/>
-				</box>
-				<textElement textAlignment="Right" verticalAlignment="Middle">
-					<font size="8"/>
-				</textElement>
-				<textFieldExpression><![CDATA[$F{lab_semillas_resultados_semillas_muertas} != null ? $F{lab_semillas_resultados_semillas_muertas}/100 : "-"]]></textFieldExpression>
-			</textField>
-			<textField pattern="#,##0.00 %">
-				<reportElement x="370" y="155" width="92" height="16" uuid="65538d89-e2c1-4964-badd-3661c176b539"/>
-				<box leftPadding="4" rightPadding="4">
-					<pen lineWidth="1.0"/>
-					<topPen lineWidth="1.0"/>
-					<leftPen lineWidth="1.0"/>
-					<bottomPen lineWidth="1.0"/>
-					<rightPen lineWidth="1.0"/>
-				</box>
-				<textElement textAlignment="Right" verticalAlignment="Middle">
-					<font size="8"/>
-				</textElement>
-				<textFieldExpression><![CDATA[$F{lab_semillas_resultados_plantas_normales} != null ? $F{lab_semillas_resultados_plantas_normales}/100 : "-"]]></textFieldExpression>
-			</textField>
-			<staticText>
-				<reportElement x="60" y="230" width="154" height="14" uuid="e2e06480-e946-4e9a-b8c5-f890981c4e95"/>
-				<box leftPadding="4" rightPadding="4">
-					<pen lineWidth="1.0"/>
-					<topPen lineWidth="1.0"/>
-					<leftPen lineWidth="1.0"/>
-					<bottomPen lineWidth="1.0"/>
-					<rightPen lineWidth="1.0"/>
-				</box>
-				<textElement verticalAlignment="Middle">
-					<font size="8" isBold="false"/>
-				</textElement>
-				<text><![CDATA[Humedad (Termobalanza):]]></text>
-			</staticText>
-			<textField pattern="#,##0.00 %">
-				<reportElement x="214" y="230" width="51" height="14" uuid="83e153a1-93da-44be-8a46-63b89a0837bf"/>
-				<box leftPadding="4" rightPadding="4">
-					<pen lineWidth="1.0"/>
-					<topPen lineWidth="1.0"/>
-					<leftPen lineWidth="1.0"/>
-					<bottomPen lineWidth="1.0"/>
-					<rightPen lineWidth="1.0"/>
-				</box>
-				<textElement textAlignment="Right" verticalAlignment="Middle">
-					<font size="8"/>
-				</textElement>
-				<textFieldExpression><![CDATA[$F{lab_semillas_resultados_humedad} != null ? $F{lab_semillas_resultados_humedad}/100 : "-"]]></textFieldExpression>
-			</textField>
-			<staticText>
-				<reportElement x="60" y="266" width="400" height="16" uuid="e67f79a3-5431-40b4-a41c-ba6f275d3ce1"/>
-				<textElement verticalAlignment="Middle">
-					<font size="8" isBold="false"/>
-				</textElement>
-				<text><![CDATA[Análisis de Viabilidad (Prueba de Tetrazolio):]]></text>
-			</staticText>
-			<staticText>
-				<reportElement x="60" y="282" width="200" height="16" uuid="5fb20f79-3150-432b-87cb-54dfb7e966ec"/>
-				<box leftPadding="4" rightPadding="4">
-					<pen lineWidth="1.0"/>
-					<topPen lineWidth="1.0"/>
-					<leftPen lineWidth="1.0"/>
-					<bottomPen lineWidth="1.0"/>
-					<rightPen lineWidth="1.0"/>
-				</box>
-				<textElement verticalAlignment="Middle">
-					<font size="8" isBold="false"/>
-				</textElement>
-				<text><![CDATA[Semillas Viables]]></text>
-			</staticText>
-			<textField pattern="#,##0.00 %">
-				<reportElement x="60" y="298" width="200" height="16" uuid="d55a9d8b-f1f5-4273-90f3-673df3510d60"/>
-				<box leftPadding="4" rightPadding="4">
-					<pen lineWidth="1.0"/>
-					<topPen lineWidth="1.0"/>
-					<leftPen lineWidth="1.0"/>
-					<bottomPen lineWidth="1.0"/>
-					<rightPen lineWidth="1.0"/>
-				</box>
-				<textElement textAlignment="Right" verticalAlignment="Middle">
-					<font size="8"/>
-				</textElement>
-				<textFieldExpression><![CDATA[$F{lab_semillas_resultados_semillas_viables} != null ? $F{lab_semillas_resultados_semillas_viables}/100 : "-"]]></textFieldExpression>
-			</textField>
-			<textField pattern="#,##0.00 %">
-				<reportElement x="260" y="298" width="200" height="16" uuid="7ebcd17e-da2e-4bce-9e13-e0406fd99fd1"/>
-				<box leftPadding="4" rightPadding="4">
-					<pen lineWidth="1.0"/>
-					<topPen lineWidth="1.0"/>
-					<leftPen lineWidth="1.0"/>
-					<bottomPen lineWidth="1.0"/>
-					<rightPen lineWidth="1.0"/>
-				</box>
-				<textElement textAlignment="Right" verticalAlignment="Middle">
-					<font size="8"/>
-				</textElement>
-				<textFieldExpression><![CDATA[$F{lab_semillas_resultados_semillas_viables} != null ? $F{lab_semillas_resultados_semillas_puras}*$F{lab_semillas_resultados_semillas_viables}/10000 : "-"]]></textFieldExpression>
-			</textField>
-			<staticText>
-				<reportElement x="260" y="282" width="200" height="16" uuid="8ed6a27f-e753-431b-81b2-852a4ac95d9b"/>
-				<box leftPadding="4" rightPadding="4">
-					<pen lineWidth="1.0"/>
-					<topPen lineWidth="1.0"/>
-					<leftPen lineWidth="1.0"/>
-					<bottomPen lineWidth="1.0"/>
-					<rightPen lineWidth="1.0"/>
-				</box>
-				<textElement verticalAlignment="Middle">
-					<font size="8" isBold="false"/>
-				</textElement>
-				<text><![CDATA[Valor cultural]]></text>
-			</staticText>
-			<staticText>
-				<reportElement x="61" y="180" width="77" height="14" uuid="cc2512ee-b1f0-480a-a9d6-fc5a771fad4d"/>
-				<box leftPadding="4" rightPadding="4">
-					<pen lineWidth="1.0"/>
-					<topPen lineWidth="1.0"/>
-					<leftPen lineWidth="1.0"/>
-					<bottomPen lineWidth="1.0"/>
-					<rightPen lineWidth="1.0"/>
-				</box>
-				<textElement verticalAlignment="Middle">
-					<font size="8" isBold="true"/>
-				</textElement>
-				<text><![CDATA[Sustrato:]]></text>
-			</staticText>
-			<textField pattern="#,##0.00 %">
-				<reportElement x="138" y="180" width="154" height="14" uuid="c238f75e-80c3-48dc-a8cb-f538b97bd6ca"/>
-				<box leftPadding="4" rightPadding="4">
-					<pen lineWidth="1.0"/>
-					<topPen lineWidth="1.0"/>
-					<leftPen lineWidth="1.0"/>
-					<bottomPen lineWidth="1.0"/>
-					<rightPen lineWidth="1.0"/>
-				</box>
-				<textElement verticalAlignment="Middle">
-					<font size="8"/>
-				</textElement>
-				<textFieldExpression><![CDATA[$F{lab_semillas_resultados_sustrato} != null ? $F{lab_semillas_resultados_sustrato} : "-"]]></textFieldExpression>
-			</textField>
-			<staticText>
-				<reportElement x="292" y="180" width="78" height="14" uuid="7a8825d0-d7cd-4f19-9375-42d2e4a48cf8"/>
-				<box leftPadding="4" rightPadding="4">
-					<pen lineWidth="1.0"/>
-					<topPen lineWidth="1.0"/>
-					<leftPen lineWidth="1.0"/>
-					<bottomPen lineWidth="1.0"/>
-					<rightPen lineWidth="1.0"/>
-				</box>
-				<textElement verticalAlignment="Middle">
-					<font size="8" isBold="true"/>
-				</textElement>
-				<text><![CDATA[Temperatura (ºC):]]></text>
-			</staticText>
-			<textField pattern="#,##0.00 %">
-				<reportElement x="370" y="180" width="92" height="14" uuid="a6c845c4-fc5e-4bae-93a1-c4fee613d98b"/>
-				<box leftPadding="4" rightPadding="4">
-					<pen lineWidth="1.0"/>
-					<topPen lineWidth="1.0"/>
-					<leftPen lineWidth="1.0"/>
-					<bottomPen lineWidth="1.0"/>
-					<rightPen lineWidth="1.0"/>
-				</box>
-				<textElement verticalAlignment="Middle">
-					<font size="8"/>
-				</textElement>
-				<textFieldExpression><![CDATA[$F{lab_semillas_resultados_temperatura} != null ? $F{lab_semillas_resultados_temperatura} : "-"]]></textFieldExpression>
-			</textField>
-			<staticText>
-				<reportElement x="61" y="194" width="77" height="14" uuid="b57c7690-cb29-4840-a47b-9a99ccaf7b9a"/>
-				<box leftPadding="4" rightPadding="4">
-					<pen lineWidth="1.0"/>
-					<topPen lineWidth="1.0"/>
-					<leftPen lineWidth="1.0"/>
-					<bottomPen lineWidth="1.0"/>
-					<rightPen lineWidth="1.0"/>
-				</box>
-				<textElement verticalAlignment="Middle">
-					<font size="8" isBold="true"/>
-				</textElement>
-				<text><![CDATA[Tratamiento:]]></text>
-			</staticText>
-			<staticText>
-				<reportElement x="292" y="194" width="78" height="14" uuid="4634abcd-4867-4d34-838f-70d6d293ed98"/>
-				<box leftPadding="4" rightPadding="4">
-					<pen lineWidth="1.0"/>
-					<topPen lineWidth="1.0"/>
-					<leftPen lineWidth="1.0"/>
-					<bottomPen lineWidth="1.0"/>
-					<rightPen lineWidth="1.0"/>
-				</box>
-				<textElement verticalAlignment="Middle">
-					<font size="8" isBold="true"/>
-				</textElement>
-				<text><![CDATA[Nº de dias:]]></text>
-			</staticText>
-			<textField pattern="#,##0.00 %">
-				<reportElement x="138" y="194" width="154" height="14" uuid="4f58c3ce-e313-47b5-b199-7b6f1c691982"/>
-				<box leftPadding="4" rightPadding="4">
-					<pen lineWidth="1.0"/>
-					<topPen lineWidth="1.0"/>
-					<leftPen lineWidth="1.0"/>
-					<bottomPen lineWidth="1.0"/>
-					<rightPen lineWidth="1.0"/>
-				</box>
-				<textElement verticalAlignment="Middle">
-					<font size="8"/>
-				</textElement>
-				<textFieldExpression><![CDATA[$F{lab_semillas_resultados_tratamiento} != null ? $F{lab_semillas_resultados_tratamiento} : "-"]]></textFieldExpression>
-			</textField>
-			<textField pattern="#,##0">
-				<reportElement x="370" y="194" width="92" height="14" uuid="9bf0452d-3a0f-4388-9fd3-257d9e863a6d"/>
-				<box leftPadding="4" rightPadding="4">
-					<pen lineWidth="1.0"/>
-					<topPen lineWidth="1.0"/>
-					<leftPen lineWidth="1.0"/>
-					<bottomPen lineWidth="1.0"/>
-					<rightPen lineWidth="1.0"/>
-				</box>
-				<textElement verticalAlignment="Middle">
-					<font size="8"/>
-				</textElement>
-				<textFieldExpression><![CDATA[$F{lab_semillas_resultados_cantidad_dias} != null ? $F{lab_semillas_resultados_cantidad_dias} : "-"]]></textFieldExpression>
-			</textField>
-			<staticText>
-				<reportElement x="60" y="380" width="401" height="30" uuid="2bfd9dda-3190-4990-91e0-8fabda4749cb"/>
-				<textElement>
-					<font size="8"/>
-				</textElement>
-				<text><![CDATA[Este Certificado de Analisis ampara a la Muestra               al Lote
+    </queryString>
+    <field name="lab_clientes_NOMBRE" class="java.lang.String"/>
+    <field name="lab_clientes_DIRECCION" class="java.lang.String"/>
+    <field name="lab_clientes_CEDULA" class="java.lang.Integer"/>
+    <field name="lab_muestras_semillas_id" class="java.lang.Integer"/>
+    <field name="lab_muestras_semillas_identificacion_original" class="java.lang.String"/>
+    <field name="lab_muestras_semillas_fecha_entrada" class="java.sql.Timestamp"/>
+    <field name="lab_muestras_semillas_zafra" class="java.lang.String"/>
+    <field name="lab_muestras_semillas_procedencia" class="java.lang.String"/>
+    <field name="lab_muestras_semillas_muestra_o_lote" class="java.lang.Integer"/>
+    <field name="lab_muestras_semillas_lote_peso" class="java.lang.Integer"/>
+    <field name="lab_muestras_semillas_lote_cantidad_bolsas" class="java.lang.String"/>
+    <field name="lab_muestras_semillas_fecha_muestreo" class="java.sql.Timestamp"/>
+    <field name="lab_semillas_categorias_descripcion" class="java.lang.String"/>
+    <field name="lab_semillas_resultados_fecha_analisis" class="java.sql.Timestamp"/>
+    <field name="lab_semillas_resultados_semillas_puras" class="java.math.BigDecimal"/>
+    <field name="lab_semillas_resultados_materia_inerte_descripcion_1" class="java.lang.String"/>
+    <field name="lab_semillas_resultados_materia_inerte_valor_1" class="java.math.BigDecimal"/>
+    <field name="lab_semillas_resultados_materia_inerte_descripcion_2" class="java.lang.String"/>
+    <field name="lab_semillas_resultados_otras_semillas_valor" class="java.math.BigDecimal"/>
+    <field name="lab_semillas_resultados_otras_semillas_descripcion" class="java.lang.String"/>
+    <field name="lab_semillas_resultados_materia_inerte_valor_2" class="java.math.BigDecimal"/>
+    <field name="lab_semillas_resultados_plantas_normales" class="java.math.BigDecimal"/>
+    <field name="lab_semillas_resultados_semillas_duras" class="java.math.BigDecimal"/>
+    <field name="lab_semillas_resultados_plantas_anormales" class="java.math.BigDecimal"/>
+    <field name="lab_semillas_resultados_semillas_muertas" class="java.math.BigDecimal"/>
+    <field name="lab_semillas_resultados_cantidad_dias" class="java.lang.Integer"/>
+    <field name="lab_semillas_resultados_humedad" class="java.math.BigDecimal"/>
+    <field name="lab_semillas_resultados_temperatura" class="java.lang.String"/>
+    <field name="lab_semillas_resultados_tratamiento" class="java.lang.String"/>
+    <field name="lab_semillas_resultados_sustrato" class="java.lang.String"/>
+    <field name="lab_semillas_resultados_semillas_viables" class="java.math.BigDecimal"/>
+    <field name="lab_semillas_especies_especie" class="java.lang.String"/>
+    <field name="lab_semillas_especies_variedad" class="java.lang.String"/>
+    <field name="lab_muestras_semillas_id_muestreador" class="java.lang.Integer"/>
+    <field name="lab_semillas_muestreadores_id" class="java.lang.Integer"/>
+    <field name="lab_semillas_muestreadores_nombre" class="java.lang.String"/>
+    <field name="lab_semillas_resultados_materia_inerte_descripcion_3" class="java.lang.String"/>
+    <field name="lab_semillas_resultados_materia_inerte_valor_3" class="java.math.BigDecimal"/>
+    <field name="lab_semillas_resultados_materia_inerte_descripcion_4" class="java.lang.String"/>
+    <field name="lab_semillas_resultados_materia_inerte_valor_4" class="java.math.BigDecimal"/>
+    <field name="lab_semillas_resultados_observaciones" class="java.lang.String"/>
+    <background>
+        <band splitType="Stretch"/>
+    </background>
+    <title>
+        <band height="86" splitType="Stretch">
+            <image>
+                <reportElement x="410" y="10" width="56" height="25" uuid="43128d03-d388-451f-b183-e65174a96c3d"/>
+                <imageExpression><![CDATA[$P{logo_lab}]]></imageExpression>
+            </image>
+            <image>
+                <reportElement x="62" y="0" width="67" height="41" uuid="2a796f1b-7719-44c4-923e-30eabdfe9194"/>
+                <imageExpression><![CDATA[$P{logo_cch}]]></imageExpression>
+            </image>
+            <staticText>
+                <reportElement x="62" y="0" width="404" height="27" uuid="7245da50-9fe9-47c3-a4a8-034d6896ca6e"/>
+                <textElement textAlignment="Center" verticalAlignment="Bottom">
+                    <font size="13" isBold="false" isItalic="true"/>
+                </textElement>
+                <text><![CDATA[Laboratorio de Análisis de Semillas]]></text>
+            </staticText>
+            <staticText>
+                <reportElement x="80" y="27" width="386" height="25" uuid="e58bc24c-8a52-4daf-a52d-fdd6b3dc0c2f"/>
+                <textElement textAlignment="Center">
+                    <font size="12" isBold="true" isItalic="false"/>
+                </textElement>
+                <text><![CDATA[RNLS Nº 07]]></text>
+            </staticText>
+            <staticText>
+                <reportElement x="120" y="59" width="296" height="27" uuid="f53761f5-da1f-46a4-af2e-27bdcda64016"/>
+                <textElement textAlignment="Center" verticalAlignment="Middle">
+                    <font size="14" isBold="true"/>
+                </textElement>
+                <text><![CDATA[CERTIFICADO DE ANÁLISIS DE SEMILLAS]]></text>
+            </staticText>
+        </band>
+    </title>
+    <pageHeader>
+        <band height="146" splitType="Stretch">
+            <textField>
+                <reportElement x="162" y="32" width="105" height="15" uuid="31072421-fb4f-4449-880c-c13031de5181"/>
+                <textElement verticalAlignment="Middle">
+                    <font size="8"/>
+                </textElement>
+                <textFieldExpression><![CDATA[$F{lab_muestras_semillas_id}]]></textFieldExpression>
+            </textField>
+            <staticText>
+                <reportElement x="61" y="32" width="100" height="15" uuid="456eec95-119c-4b89-9cf0-db80e8391f15"/>
+                <textElement verticalAlignment="Middle">
+                    <font size="8" isBold="true"/>
+                </textElement>
+                <text><![CDATA[Muestra Nº:]]></text>
+            </staticText>
+            <staticText>
+                <reportElement x="61" y="47" width="100" height="15" uuid="377c51b0-7288-4039-9a2c-2542f28fb015"/>
+                <textElement verticalAlignment="Middle">
+                    <font size="8" isBold="true"/>
+                </textElement>
+                <text><![CDATA[Cliente:]]></text>
+            </staticText>
+            <textField>
+                <reportElement x="162" y="47" width="105" height="15" uuid="5ebebe87-706c-46a3-bf71-6857cbce7f75"/>
+                <textElement verticalAlignment="Middle">
+                    <font size="8"/>
+                </textElement>
+                <textFieldExpression><![CDATA[$F{lab_clientes_NOMBRE}]]></textFieldExpression>
+            </textField>
+            <staticText>
+                <reportElement x="61" y="77" width="100" height="15" uuid="15870b5e-aa00-46e3-b795-89f87f2214d3"/>
+                <textElement verticalAlignment="Middle">
+                    <font size="8" isBold="true"/>
+                </textElement>
+                <text><![CDATA[Categoría:]]></text>
+            </staticText>
+            <staticText>
+                <reportElement x="61" y="62" width="100" height="15" uuid="5163aad6-7156-4e82-8dab-1b7b04341c7c"/>
+                <textElement verticalAlignment="Middle">
+                    <font size="8" isBold="true"/>
+                </textElement>
+                <text><![CDATA[Género/Especie:]]></text>
+            </staticText>
+            <staticText>
+                <reportElement x="61" y="92" width="100" height="15" uuid="b189ba85-e9bb-4c44-85e6-a5085cdfcc7c"/>
+                <textElement verticalAlignment="Middle">
+                    <font size="8" isBold="true"/>
+                </textElement>
+                <text><![CDATA[Fecha Muestreo:]]></text>
+            </staticText>
+            <staticText>
+                <reportElement x="61" y="107" width="100" height="15" uuid="c6fc46d2-a8d5-443a-be97-3fe11e795123"/>
+                <textElement verticalAlignment="Middle">
+                    <font size="8" isBold="true"/>
+                </textElement>
+                <text><![CDATA[Peso de Lote (Kg):]]></text>
+            </staticText>
+            <staticText>
+                <reportElement x="61" y="122" width="100" height="15" uuid="f1b8489a-a5f7-4289-8f3c-82b5094f8fe2"/>
+                <textElement verticalAlignment="Middle">
+                    <font size="8" isBold="true"/>
+                </textElement>
+                <text><![CDATA[Cantidad de bolsas:]]></text>
+            </staticText>
+            <textField>
+                <reportElement x="162" y="62" width="105" height="15" uuid="9ac63016-e80a-416a-bb0c-3c353802120b"/>
+                <textElement verticalAlignment="Middle">
+                    <font size="8"/>
+                </textElement>
+                <textFieldExpression><![CDATA[$F{lab_semillas_especies_especie}]]></textFieldExpression>
+            </textField>
+            <textField>
+                <reportElement x="162" y="77" width="105" height="15" uuid="ae661c84-e6d7-4568-aec9-c80fe5bdfdd9"/>
+                <textElement verticalAlignment="Middle">
+                    <font size="8"/>
+                </textElement>
+                <textFieldExpression><![CDATA[$F{lab_semillas_categorias_descripcion}]]></textFieldExpression>
+            </textField>
+            <staticText>
+                <reportElement x="267" y="32" width="100" height="15" uuid="c4b5c0de-f233-48ec-88db-108d29be24ab"/>
+                <textElement verticalAlignment="Middle">
+                    <font size="8" isBold="true"/>
+                </textElement>
+                <text><![CDATA[Procedencia:]]></text>
+            </staticText>
+            <staticText>
+                <reportElement x="267" y="47" width="100" height="15" uuid="c10f06dc-c026-4a53-8099-e3061cb75dad"/>
+                <textElement verticalAlignment="Middle">
+                    <font size="8" isBold="true"/>
+                </textElement>
+                <text><![CDATA[Variedad:]]></text>
+            </staticText>
+            <staticText>
+                <reportElement x="267" y="77" width="100" height="15" uuid="6ed661cd-6ae0-49f4-96f8-8cc341394788"/>
+                <textElement verticalAlignment="Middle">
+                    <font size="8" isBold="true"/>
+                </textElement>
+                <text><![CDATA[Identif. original:]]></text>
+            </staticText>
+            <staticText>
+                <reportElement x="267" y="62" width="100" height="15" uuid="723e77a6-1aba-4005-8582-f92310f50e2d"/>
+                <textElement verticalAlignment="Middle">
+                    <font size="8" isBold="true"/>
+                </textElement>
+                <text><![CDATA[Zafra:]]></text>
+            </staticText>
+            <staticText>
+                <reportElement x="267" y="92" width="100" height="15" uuid="81fdd24a-652e-47ef-bc92-da5bc443d300"/>
+                <textElement verticalAlignment="Middle">
+                    <font size="8" isBold="true"/>
+                </textElement>
+                <text><![CDATA[Fecha de Entrada:]]></text>
+            </staticText>
+            <staticText>
+                <reportElement x="267" y="107" width="100" height="15" uuid="148c9b0e-b279-454f-910a-dade10c5a99b"/>
+                <textElement verticalAlignment="Middle">
+                    <font size="8" isBold="true"/>
+                </textElement>
+                <text><![CDATA[Fecha de Análisis:]]></text>
+            </staticText>
+            <textField pattern="dd/MM/yyyy">
+                <reportElement x="367" y="107" width="100" height="15" uuid="ebd1a8af-9148-476e-9912-2c7e8b56ac8a"/>
+                <textElement verticalAlignment="Middle">
+                    <font size="8"/>
+                </textElement>
+                <textFieldExpression><![CDATA[$F{lab_semillas_resultados_fecha_analisis} != null ? $F{lab_semillas_resultados_fecha_analisis} : "-"]]></textFieldExpression>
+            </textField>
+            <textField pattern="dd/MM/yyyy">
+                <reportElement x="367" y="92" width="100" height="15" uuid="44390c5d-3087-4ec2-801f-d32b34de3874"/>
+                <textElement verticalAlignment="Middle">
+                    <font size="8"/>
+                </textElement>
+                <textFieldExpression><![CDATA[$F{lab_muestras_semillas_fecha_entrada} != null ? $F{lab_muestras_semillas_fecha_entrada} : "-"]]></textFieldExpression>
+            </textField>
+            <textField>
+                <reportElement x="367" y="77" width="100" height="15" uuid="59dfe06a-1ed2-49fa-b01a-c0fde5e4af45"/>
+                <textElement verticalAlignment="Middle">
+                    <font size="8"/>
+                </textElement>
+                <textFieldExpression><![CDATA[$F{lab_muestras_semillas_identificacion_original} != null ? $F{lab_muestras_semillas_identificacion_original} : "-"]]></textFieldExpression>
+            </textField>
+            <textField>
+                <reportElement x="367" y="62" width="100" height="15" uuid="0af4040d-fce4-4eb9-950f-eb5e90a08412"/>
+                <textElement verticalAlignment="Middle">
+                    <font size="8"/>
+                </textElement>
+                <textFieldExpression><![CDATA[$F{lab_muestras_semillas_zafra} != null ? $F{lab_muestras_semillas_zafra} : "-"]]></textFieldExpression>
+            </textField>
+            <textField>
+                <reportElement x="367" y="32" width="100" height="15" uuid="1a0885c2-8102-43b9-a369-ffff192b798a">
+                    <property name="local_mesure_unity" value="pixel"/>
+                    <property name="local_mesure_unitheight" value="pixel"/>
+                    <property name="com.jaspersoft.studio.unit.height" value="px"/>
+                </reportElement>
+                <textElement verticalAlignment="Middle">
+                    <font size="8"/>
+                </textElement>
+                <textFieldExpression><![CDATA[$F{lab_muestras_semillas_procedencia} != null ? $F{lab_muestras_semillas_procedencia} : "-"]]></textFieldExpression>
+            </textField>
+            <textField>
+                <reportElement x="161" y="107" width="105" height="15" uuid="18a8630e-404f-4e21-8228-2b9efe212ebd"/>
+                <textElement verticalAlignment="Middle">
+                    <font size="8"/>
+                </textElement>
+                <textFieldExpression><![CDATA[$F{lab_muestras_semillas_lote_peso} != null ? $F{lab_muestras_semillas_lote_peso} : "-"]]></textFieldExpression>
+            </textField>
+            <textField pattern="dd/MM/yyyy">
+                <reportElement x="162" y="92" width="105" height="15" uuid="46cb6a22-9346-4f48-bbde-d6c4952ba09d"/>
+                <textElement verticalAlignment="Middle">
+                    <font size="8"/>
+                </textElement>
+                <textFieldExpression><![CDATA[$F{lab_muestras_semillas_fecha_muestreo} != null ? $F{lab_muestras_semillas_fecha_muestreo} : "-"]]></textFieldExpression>
+            </textField>
+            <textField>
+                <reportElement x="162" y="122" width="105" height="15" uuid="f139d01d-74d3-4e57-b0d6-e4778a00977f"/>
+                <textElement verticalAlignment="Middle">
+                    <font size="8"/>
+                </textElement>
+                <textFieldExpression><![CDATA[$F{lab_muestras_semillas_lote_cantidad_bolsas} != null ? $F{lab_muestras_semillas_lote_cantidad_bolsas} : "-"]]></textFieldExpression>
+            </textField>
+            <textField>
+                <reportElement x="367" y="47" width="100" height="15" uuid="70e70e0c-9285-4dcf-b3f8-47c2a4d0e4ef"/>
+                <textElement verticalAlignment="Middle">
+                    <font size="8"/>
+                </textElement>
+                <textFieldExpression><![CDATA[$F{lab_semillas_especies_variedad} != null ? $F{lab_semillas_especies_variedad} : "-"]]></textFieldExpression>
+            </textField>
+            <textField>
+                <reportElement x="62" y="0" width="404" height="20" uuid="2aeae9a6-68a2-44ad-a67f-fbdb75af753a"/>
+                <textElement textAlignment="Center"/>
+                <textFieldExpression><![CDATA["Nº " + $F{lab_muestras_semillas_id}]]></textFieldExpression>
+            </textField>
+            <textField pattern="dd/MM/yyyy">
+                <reportElement x="367" y="122" width="100" height="15" uuid="3b5b5561-07f8-4902-b818-89122502e0a8"/>
+                <textElement verticalAlignment="Middle">
+                    <font size="8"/>
+                </textElement>
+                <textFieldExpression><![CDATA[$F{lab_muestras_semillas_id_muestreador} != null ? $F{lab_semillas_muestreadores_nombre}+" / " + $F{lab_semillas_muestreadores_id} : "-"]]></textFieldExpression>
+            </textField>
+            <staticText>
+                <reportElement x="267" y="122" width="100" height="15" uuid="4ca21d69-5321-4567-95c7-67a4a51ebef3"/>
+                <textElement verticalAlignment="Middle">
+                    <font size="8" isBold="true"/>
+                </textElement>
+                <text><![CDATA[Muestreado por:]]></text>
+            </staticText>
+        </band>
+    </pageHeader>
+    <detail>
+        <band height="437" splitType="Stretch">
+            <staticText>
+                <reportElement x="61" y="0" width="406" height="20" uuid="b815b021-cccf-41d0-acaf-3de560a2587c"/>
+                <textElement textAlignment="Center" verticalAlignment="Middle">
+                    <font size="11" isBold="false"/>
+                </textElement>
+                <text><![CDATA[Resultados de Análisis]]></text>
+            </staticText>
+            <staticText>
+                <reportElement x="60" y="20" width="400" height="14" uuid="90ef929c-cb56-4063-8f7b-a774ae238517"/>
+                <textElement verticalAlignment="Middle">
+                    <font size="8" isBold="false"/>
+                </textElement>
+                <text><![CDATA[Análisis de Pureza:]]></text>
+            </staticText>
+            <staticText>
+                <reportElement x="62" y="115" width="400" height="16" uuid="21b823c1-9d5c-4a32-b9b1-87804da79f1b"/>
+                <textElement verticalAlignment="Middle">
+                    <font size="8" isBold="true"/>
+                </textElement>
+                <text><![CDATA[Análisis de Germinación:]]></text>
+            </staticText>
+            <staticText>
+                <reportElement x="60" y="215" width="400" height="14" uuid="53583ff7-dd4d-425c-a095-5f2615f0be48"/>
+                <textElement verticalAlignment="Middle">
+                    <font size="8" isBold="false"/>
+                </textElement>
+                <text><![CDATA[Análisis de Humedad:]]></text>
+            </staticText>
+            <staticText>
+                <reportElement x="60" y="250" width="400" height="16" uuid="0ebd6abb-4ff6-471e-829a-0668d20cfab8"/>
+                <textElement verticalAlignment="Middle">
+                    <font size="8" isBold="false"/>
+                </textElement>
+                <text><![CDATA[Otras Determinaciones:]]></text>
+            </staticText>
+            <staticText>
+                <reportElement x="60" y="34" width="100" height="14" uuid="01760541-dcab-4106-919f-53316aabc722"/>
+                <box leftPadding="4" rightPadding="4">
+                    <pen lineWidth="1.0"/>
+                    <topPen lineWidth="1.0"/>
+                    <leftPen lineWidth="1.0"/>
+                    <bottomPen lineWidth="1.0"/>
+                    <rightPen lineWidth="1.0"/>
+                </box>
+                <textElement verticalAlignment="Middle">
+                    <font size="8" isBold="false"/>
+                </textElement>
+                <text><![CDATA[Semillas Puras]]></text>
+            </staticText>
+            <textField pattern="#,##0.00 %">
+                <reportElement x="60" y="48" width="100" height="14" uuid="658e0fb6-a479-4336-b2c3-0f3cc603b257"/>
+                <box leftPadding="4" rightPadding="4">
+                    <pen lineWidth="1.0"/>
+                    <topPen lineWidth="1.0"/>
+                    <leftPen lineWidth="1.0"/>
+                    <bottomPen lineWidth="1.0"/>
+                    <rightPen lineWidth="1.0"/>
+                </box>
+                <textElement textAlignment="Right" verticalAlignment="Middle">
+                    <font size="8"/>
+                </textElement>
+                <textFieldExpression><![CDATA[$F{lab_semillas_resultados_semillas_puras} != null ? $F{lab_semillas_resultados_semillas_puras}/100 : "-"]]></textFieldExpression>
+            </textField>
+            <staticText>
+                <reportElement x="160" y="34" width="300" height="14" uuid="7c7be08b-5e79-4bd1-b157-c1fbceb9738b"/>
+                <box leftPadding="4" rightPadding="4">
+                    <pen lineWidth="1.0"/>
+                    <topPen lineWidth="1.0"/>
+                    <leftPen lineWidth="1.0"/>
+                    <bottomPen lineWidth="1.0"/>
+                    <rightPen lineWidth="1.0"/>
+                </box>
+                <textElement verticalAlignment="Middle">
+                    <font size="8" isBold="false"/>
+                </textElement>
+                <text><![CDATA[Materia inerte]]></text>
+            </staticText>
+            <textField pattern="#,##0.00 %">
+                <reportElement x="160" y="62" width="75" height="14" uuid="126c30cc-f661-445e-bb46-6ebb4e5820e6"/>
+                <box leftPadding="4" rightPadding="4">
+                    <pen lineWidth="1.0"/>
+                    <topPen lineWidth="1.0"/>
+                    <leftPen lineWidth="1.0"/>
+                    <bottomPen lineWidth="1.0"/>
+                    <rightPen lineWidth="1.0"/>
+                </box>
+                <textElement textAlignment="Right" verticalAlignment="Middle">
+                    <font size="8"/>
+                </textElement>
+                <textFieldExpression><![CDATA[$F{lab_semillas_resultados_materia_inerte_descripcion_1} != null ? $F{lab_semillas_resultados_materia_inerte_descripcion_1} : "-"]]></textFieldExpression>
+            </textField>
+            <textField pattern="#,##0.00 %">
+                <reportElement x="160" y="48" width="75" height="14" uuid="59036e5e-9129-4224-b328-82640d98f449">
+                    <property name="com.jaspersoft.studio.unit.width" value="pixel"/>
+                </reportElement>
+                <box leftPadding="4" rightPadding="4">
+                    <pen lineWidth="1.0"/>
+                    <topPen lineWidth="1.0"/>
+                    <leftPen lineWidth="1.0"/>
+                    <bottomPen lineWidth="1.0"/>
+                    <rightPen lineWidth="1.0"/>
+                </box>
+                <textElement textAlignment="Right" verticalAlignment="Middle">
+                    <font size="8"/>
+                </textElement>
+                <textFieldExpression><![CDATA[$F{lab_semillas_resultados_materia_inerte_valor_1} != null ? $F{lab_semillas_resultados_materia_inerte_valor_1}/100 : "-"]]></textFieldExpression>
+            </textField>
+            <textField pattern="#,##0.00 %">
+                <reportElement x="235" y="62" width="75" height="14" uuid="a4c6559f-2292-46b8-abf3-6107f0544b26"/>
+                <box leftPadding="4" rightPadding="4">
+                    <pen lineWidth="1.0"/>
+                    <topPen lineWidth="1.0"/>
+                    <leftPen lineWidth="1.0"/>
+                    <bottomPen lineWidth="1.0"/>
+                    <rightPen lineWidth="1.0"/>
+                </box>
+                <textElement textAlignment="Right" verticalAlignment="Middle">
+                    <font size="8"/>
+                </textElement>
+                <textFieldExpression><![CDATA[$F{lab_semillas_resultados_materia_inerte_descripcion_2} != null ? $F{lab_semillas_resultados_materia_inerte_descripcion_2} : "-"]]></textFieldExpression>
+            </textField>
+            <textField pattern="#,##0.00 %">
+                <reportElement x="235" y="48" width="75" height="14" uuid="345e37a2-0c88-49ff-906a-0d3295879cb0"/>
+                <box leftPadding="4" rightPadding="4">
+                    <pen lineWidth="1.0"/>
+                    <topPen lineWidth="1.0"/>
+                    <leftPen lineWidth="1.0"/>
+                    <bottomPen lineWidth="1.0"/>
+                    <rightPen lineWidth="1.0"/>
+                </box>
+                <textElement textAlignment="Right" verticalAlignment="Middle">
+                    <font size="8"/>
+                </textElement>
+                <textFieldExpression><![CDATA[$F{lab_semillas_resultados_materia_inerte_valor_2} != null ? $F{lab_semillas_resultados_materia_inerte_valor_2}/100 : "-"]]></textFieldExpression>
+            </textField>
+            <staticText>
+                <reportElement x="60" y="82" width="402" height="14" uuid="752fdd27-8c21-4f8e-a5a1-f1b372af3d11"/>
+                <box leftPadding="4" rightPadding="4">
+                    <pen lineWidth="1.0"/>
+                    <topPen lineWidth="0.0"/>
+                    <leftPen lineWidth="0.0"/>
+                    <bottomPen lineWidth="0.0"/>
+                    <rightPen lineWidth="0.0"/>
+                </box>
+                <textElement verticalAlignment="Middle">
+                    <font size="8" isBold="true"/>
+                </textElement>
+                <text><![CDATA[Otras Semillas]]></text>
+            </staticText>
+            <textField pattern="#,##0.00 %">
+                <reportElement x="60" y="96" width="78" height="14" uuid="672dbdcf-812b-43e7-86ae-f4a6dcd59eec"/>
+                <box leftPadding="4" rightPadding="4">
+                    <pen lineWidth="1.0"/>
+                    <topPen lineWidth="1.0"/>
+                    <leftPen lineWidth="1.0"/>
+                    <bottomPen lineWidth="1.0"/>
+                    <rightPen lineWidth="1.0"/>
+                </box>
+                <textElement textAlignment="Right" verticalAlignment="Middle">
+                    <font size="8"/>
+                </textElement>
+                <textFieldExpression><![CDATA[$F{lab_semillas_resultados_otras_semillas_valor} != null ? $F{lab_semillas_resultados_otras_semillas_valor}/100 : "-"]]></textFieldExpression>
+            </textField>
+            <textField pattern="#,##0.00 %">
+                <reportElement x="138" y="96" width="325" height="14" uuid="51b3be57-1167-47a4-ba73-5e45fcb7c792"/>
+                <box leftPadding="4" rightPadding="4">
+                    <pen lineWidth="1.0"/>
+                    <topPen lineWidth="1.0"/>
+                    <leftPen lineWidth="1.0"/>
+                    <bottomPen lineWidth="1.0"/>
+                    <rightPen lineWidth="1.0"/>
+                </box>
+                <textElement textAlignment="Left" verticalAlignment="Middle">
+                    <font size="8"/>
+                </textElement>
+                <textFieldExpression><![CDATA[$F{lab_semillas_resultados_otras_semillas_descripcion} != null ? $F{lab_semillas_resultados_otras_semillas_descripcion} : "-"]]></textFieldExpression>
+            </textField>
+            <staticText>
+                <reportElement x="62" y="131" width="77" height="24" uuid="713abee3-572f-4215-9ee6-1df45fed6d27"/>
+                <box leftPadding="4" rightPadding="4">
+                    <pen lineWidth="1.0"/>
+                    <topPen lineWidth="1.0"/>
+                    <leftPen lineWidth="1.0"/>
+                    <bottomPen lineWidth="1.0"/>
+                    <rightPen lineWidth="1.0"/>
+                </box>
+                <textElement textAlignment="Center" verticalAlignment="Middle">
+                    <font size="8" isBold="false"/>
+                </textElement>
+                <text><![CDATA[Plantas normales]]></text>
+            </staticText>
+            <textField pattern="#,##0.00 %">
+                <reportElement x="62" y="155" width="77" height="16" uuid="4ab9b428-daa9-499a-9fbe-9cade4682b43"/>
+                <box leftPadding="4" rightPadding="4">
+                    <pen lineWidth="1.0"/>
+                    <topPen lineWidth="1.0"/>
+                    <leftPen lineWidth="1.0"/>
+                    <bottomPen lineWidth="1.0"/>
+                    <rightPen lineWidth="1.0"/>
+                </box>
+                <textElement textAlignment="Right" verticalAlignment="Middle">
+                    <font size="8"/>
+                </textElement>
+                <textFieldExpression><![CDATA[$F{lab_semillas_resultados_plantas_normales} != null ? $F{lab_semillas_resultados_plantas_normales}/100 : "-"]]></textFieldExpression>
+            </textField>
+            <staticText>
+                <reportElement x="139" y="131" width="77" height="24" uuid="e39217fa-6d11-47b6-a08a-ee028132dbf9"/>
+                <box leftPadding="4" rightPadding="4">
+                    <pen lineWidth="1.0"/>
+                    <topPen lineWidth="1.0"/>
+                    <leftPen lineWidth="1.0"/>
+                    <bottomPen lineWidth="1.0"/>
+                    <rightPen lineWidth="1.0"/>
+                </box>
+                <textElement textAlignment="Center" verticalAlignment="Middle">
+                    <font size="8" isBold="false"/>
+                </textElement>
+                <text><![CDATA[Semillas duras]]></text>
+            </staticText>
+            <staticText>
+                <reportElement x="293" y="131" width="77" height="24" uuid="9402c106-241b-4f44-a032-ef57c82014e8"/>
+                <box leftPadding="4" rightPadding="4">
+                    <pen lineWidth="1.0"/>
+                    <topPen lineWidth="1.0"/>
+                    <leftPen lineWidth="1.0"/>
+                    <bottomPen lineWidth="1.0"/>
+                    <rightPen lineWidth="1.0"/>
+                </box>
+                <textElement textAlignment="Center" verticalAlignment="Middle">
+                    <font size="8" isBold="false"/>
+                </textElement>
+                <text><![CDATA[Semillas muertas]]></text>
+            </staticText>
+            <staticText>
+                <reportElement x="216" y="131" width="77" height="24" uuid="d090bebe-eba1-451a-be36-5d936b24bd08"/>
+                <box leftPadding="4" rightPadding="4">
+                    <pen lineWidth="1.0"/>
+                    <topPen lineWidth="1.0"/>
+                    <leftPen lineWidth="1.0"/>
+                    <bottomPen lineWidth="1.0"/>
+                    <rightPen lineWidth="1.0"/>
+                </box>
+                <textElement textAlignment="Center" verticalAlignment="Middle">
+                    <font size="8" isBold="false"/>
+                </textElement>
+                <text><![CDATA[Plantas anormales]]></text>
+            </staticText>
+            <staticText>
+                <reportElement x="370" y="131" width="92" height="24" uuid="c641c393-cbdc-4ce1-b420-7db0e1a48c41"/>
+                <box leftPadding="4" rightPadding="4">
+                    <pen lineWidth="1.0"/>
+                    <topPen lineWidth="1.0"/>
+                    <leftPen lineWidth="1.0"/>
+                    <bottomPen lineWidth="1.0"/>
+                    <rightPen lineWidth="1.0"/>
+                </box>
+                <textElement textAlignment="Center" verticalAlignment="Middle">
+                    <font size="8" isBold="false"/>
+                </textElement>
+                <text><![CDATA[Poder germinativo]]></text>
+            </staticText>
+            <textField pattern="#,##0.00 %">
+                <reportElement x="216" y="155" width="77" height="16" uuid="c8dad5ea-9971-48f5-be02-0ab7f5d0506e"/>
+                <box leftPadding="4" rightPadding="4">
+                    <pen lineWidth="1.0"/>
+                    <topPen lineWidth="1.0"/>
+                    <leftPen lineWidth="1.0"/>
+                    <bottomPen lineWidth="1.0"/>
+                    <rightPen lineWidth="1.0"/>
+                </box>
+                <textElement textAlignment="Right" verticalAlignment="Middle">
+                    <font size="8"/>
+                </textElement>
+                <textFieldExpression><![CDATA[$F{lab_semillas_resultados_plantas_anormales} != null ? $F{lab_semillas_resultados_plantas_anormales}/100 : "-"]]></textFieldExpression>
+            </textField>
+            <textField pattern="#,##0.00 %">
+                <reportElement x="139" y="155" width="77" height="16" uuid="8523fa09-4454-4183-a296-c3e971252501"/>
+                <box leftPadding="4" rightPadding="4">
+                    <pen lineWidth="1.0"/>
+                    <topPen lineWidth="1.0"/>
+                    <leftPen lineWidth="1.0"/>
+                    <bottomPen lineWidth="1.0"/>
+                    <rightPen lineWidth="1.0"/>
+                </box>
+                <textElement textAlignment="Right" verticalAlignment="Middle">
+                    <font size="8"/>
+                </textElement>
+                <textFieldExpression><![CDATA[$F{lab_semillas_resultados_semillas_duras} != null ? $F{lab_semillas_resultados_semillas_duras}/100 : "-"]]></textFieldExpression>
+            </textField>
+            <textField pattern="#,##0.00 %">
+                <reportElement x="293" y="155" width="77" height="16" uuid="1ade7864-99b9-4d19-89cb-836297ee9ed7"/>
+                <box leftPadding="4" rightPadding="4">
+                    <pen lineWidth="1.0"/>
+                    <topPen lineWidth="1.0"/>
+                    <leftPen lineWidth="1.0"/>
+                    <bottomPen lineWidth="1.0"/>
+                    <rightPen lineWidth="1.0"/>
+                </box>
+                <textElement textAlignment="Right" verticalAlignment="Middle">
+                    <font size="8"/>
+                </textElement>
+                <textFieldExpression><![CDATA[$F{lab_semillas_resultados_semillas_muertas} != null ? $F{lab_semillas_resultados_semillas_muertas}/100 : "-"]]></textFieldExpression>
+            </textField>
+            <textField pattern="#,##0.00 %">
+                <reportElement x="370" y="155" width="92" height="16" uuid="65538d89-e2c1-4964-badd-3661c176b539"/>
+                <box leftPadding="4" rightPadding="4">
+                    <pen lineWidth="1.0"/>
+                    <topPen lineWidth="1.0"/>
+                    <leftPen lineWidth="1.0"/>
+                    <bottomPen lineWidth="1.0"/>
+                    <rightPen lineWidth="1.0"/>
+                </box>
+                <textElement textAlignment="Right" verticalAlignment="Middle">
+                    <font size="8"/>
+                </textElement>
+                <textFieldExpression><![CDATA[$F{lab_semillas_resultados_plantas_normales} != null ? $F{lab_semillas_resultados_plantas_normales}/100 : "-"]]></textFieldExpression>
+            </textField>
+            <staticText>
+                <reportElement x="60" y="230" width="154" height="14" uuid="e2e06480-e946-4e9a-b8c5-f890981c4e95"/>
+                <box leftPadding="4" rightPadding="4">
+                    <pen lineWidth="1.0"/>
+                    <topPen lineWidth="1.0"/>
+                    <leftPen lineWidth="1.0"/>
+                    <bottomPen lineWidth="1.0"/>
+                    <rightPen lineWidth="1.0"/>
+                </box>
+                <textElement verticalAlignment="Middle">
+                    <font size="8" isBold="false"/>
+                </textElement>
+                <text><![CDATA[Humedad (Termobalanza):]]></text>
+            </staticText>
+            <textField pattern="#,##0.00 %">
+                <reportElement x="214" y="230" width="51" height="14" uuid="83e153a1-93da-44be-8a46-63b89a0837bf"/>
+                <box leftPadding="4" rightPadding="4">
+                    <pen lineWidth="1.0"/>
+                    <topPen lineWidth="1.0"/>
+                    <leftPen lineWidth="1.0"/>
+                    <bottomPen lineWidth="1.0"/>
+                    <rightPen lineWidth="1.0"/>
+                </box>
+                <textElement textAlignment="Right" verticalAlignment="Middle">
+                    <font size="8"/>
+                </textElement>
+                <textFieldExpression><![CDATA[$F{lab_semillas_resultados_humedad} != null ? $F{lab_semillas_resultados_humedad}/100 : "-"]]></textFieldExpression>
+            </textField>
+            <staticText>
+                <reportElement x="60" y="266" width="400" height="16" uuid="e67f79a3-5431-40b4-a41c-ba6f275d3ce1"/>
+                <textElement verticalAlignment="Middle">
+                    <font size="8" isBold="false"/>
+                </textElement>
+                <text><![CDATA[Análisis de Viabilidad (Prueba de Tetrazolio):]]></text>
+            </staticText>
+            <staticText>
+                <reportElement x="60" y="282" width="200" height="16" uuid="5fb20f79-3150-432b-87cb-54dfb7e966ec"/>
+                <box leftPadding="4" rightPadding="4">
+                    <pen lineWidth="1.0"/>
+                    <topPen lineWidth="1.0"/>
+                    <leftPen lineWidth="1.0"/>
+                    <bottomPen lineWidth="1.0"/>
+                    <rightPen lineWidth="1.0"/>
+                </box>
+                <textElement verticalAlignment="Middle">
+                    <font size="8" isBold="false"/>
+                </textElement>
+                <text><![CDATA[Semillas Viables]]></text>
+            </staticText>
+            <textField pattern="#,##0.00 %">
+                <reportElement x="60" y="298" width="200" height="16" uuid="d55a9d8b-f1f5-4273-90f3-673df3510d60"/>
+                <box leftPadding="4" rightPadding="4">
+                    <pen lineWidth="1.0"/>
+                    <topPen lineWidth="1.0"/>
+                    <leftPen lineWidth="1.0"/>
+                    <bottomPen lineWidth="1.0"/>
+                    <rightPen lineWidth="1.0"/>
+                </box>
+                <textElement textAlignment="Right" verticalAlignment="Middle">
+                    <font size="8"/>
+                </textElement>
+                <textFieldExpression><![CDATA[$F{lab_semillas_resultados_semillas_viables} != null ? $F{lab_semillas_resultados_semillas_viables}/100 : "-"]]></textFieldExpression>
+            </textField>
+            <textField pattern="#,##0.00 %">
+                <reportElement x="260" y="298" width="200" height="16" uuid="7ebcd17e-da2e-4bce-9e13-e0406fd99fd1"/>
+                <box leftPadding="4" rightPadding="4">
+                    <pen lineWidth="1.0"/>
+                    <topPen lineWidth="1.0"/>
+                    <leftPen lineWidth="1.0"/>
+                    <bottomPen lineWidth="1.0"/>
+                    <rightPen lineWidth="1.0"/>
+                </box>
+                <textElement textAlignment="Right" verticalAlignment="Middle">
+                    <font size="8"/>
+                </textElement>
+                <textFieldExpression><![CDATA[$F{lab_semillas_resultados_semillas_viables} != null ? $F{lab_semillas_resultados_semillas_puras}*$F{lab_semillas_resultados_semillas_viables}/10000 : "-"]]></textFieldExpression>
+            </textField>
+            <staticText>
+                <reportElement x="260" y="282" width="200" height="16" uuid="8ed6a27f-e753-431b-81b2-852a4ac95d9b"/>
+                <box leftPadding="4" rightPadding="4">
+                    <pen lineWidth="1.0"/>
+                    <topPen lineWidth="1.0"/>
+                    <leftPen lineWidth="1.0"/>
+                    <bottomPen lineWidth="1.0"/>
+                    <rightPen lineWidth="1.0"/>
+                </box>
+                <textElement verticalAlignment="Middle">
+                    <font size="8" isBold="false"/>
+                </textElement>
+                <text><![CDATA[Valor cultural]]></text>
+            </staticText>
+            <staticText>
+                <reportElement x="61" y="180" width="77" height="14" uuid="cc2512ee-b1f0-480a-a9d6-fc5a771fad4d"/>
+                <box leftPadding="4" rightPadding="4">
+                    <pen lineWidth="1.0"/>
+                    <topPen lineWidth="1.0"/>
+                    <leftPen lineWidth="1.0"/>
+                    <bottomPen lineWidth="1.0"/>
+                    <rightPen lineWidth="1.0"/>
+                </box>
+                <textElement verticalAlignment="Middle">
+                    <font size="8" isBold="true"/>
+                </textElement>
+                <text><![CDATA[Sustrato:]]></text>
+            </staticText>
+            <textField pattern="#,##0.00 %">
+                <reportElement x="138" y="180" width="154" height="14" uuid="c238f75e-80c3-48dc-a8cb-f538b97bd6ca"/>
+                <box leftPadding="4" rightPadding="4">
+                    <pen lineWidth="1.0"/>
+                    <topPen lineWidth="1.0"/>
+                    <leftPen lineWidth="1.0"/>
+                    <bottomPen lineWidth="1.0"/>
+                    <rightPen lineWidth="1.0"/>
+                </box>
+                <textElement verticalAlignment="Middle">
+                    <font size="8"/>
+                </textElement>
+                <textFieldExpression><![CDATA[$F{lab_semillas_resultados_sustrato} != null ? $F{lab_semillas_resultados_sustrato} : "-"]]></textFieldExpression>
+            </textField>
+            <staticText>
+                <reportElement x="292" y="180" width="78" height="14" uuid="7a8825d0-d7cd-4f19-9375-42d2e4a48cf8"/>
+                <box leftPadding="4" rightPadding="4">
+                    <pen lineWidth="1.0"/>
+                    <topPen lineWidth="1.0"/>
+                    <leftPen lineWidth="1.0"/>
+                    <bottomPen lineWidth="1.0"/>
+                    <rightPen lineWidth="1.0"/>
+                </box>
+                <textElement verticalAlignment="Middle">
+                    <font size="8" isBold="true"/>
+                </textElement>
+                <text><![CDATA[Temperatura (ºC):]]></text>
+            </staticText>
+            <textField pattern="#,##0.00 %">
+                <reportElement x="370" y="180" width="92" height="14" uuid="a6c845c4-fc5e-4bae-93a1-c4fee613d98b"/>
+                <box leftPadding="4" rightPadding="4">
+                    <pen lineWidth="1.0"/>
+                    <topPen lineWidth="1.0"/>
+                    <leftPen lineWidth="1.0"/>
+                    <bottomPen lineWidth="1.0"/>
+                    <rightPen lineWidth="1.0"/>
+                </box>
+                <textElement verticalAlignment="Middle">
+                    <font size="8"/>
+                </textElement>
+                <textFieldExpression><![CDATA[$F{lab_semillas_resultados_temperatura} != null ? $F{lab_semillas_resultados_temperatura} : "-"]]></textFieldExpression>
+            </textField>
+            <staticText>
+                <reportElement x="61" y="194" width="77" height="14" uuid="b57c7690-cb29-4840-a47b-9a99ccaf7b9a"/>
+                <box leftPadding="4" rightPadding="4">
+                    <pen lineWidth="1.0"/>
+                    <topPen lineWidth="1.0"/>
+                    <leftPen lineWidth="1.0"/>
+                    <bottomPen lineWidth="1.0"/>
+                    <rightPen lineWidth="1.0"/>
+                </box>
+                <textElement verticalAlignment="Middle">
+                    <font size="8" isBold="true"/>
+                </textElement>
+                <text><![CDATA[Tratamiento:]]></text>
+            </staticText>
+            <staticText>
+                <reportElement x="292" y="194" width="78" height="14" uuid="4634abcd-4867-4d34-838f-70d6d293ed98"/>
+                <box leftPadding="4" rightPadding="4">
+                    <pen lineWidth="1.0"/>
+                    <topPen lineWidth="1.0"/>
+                    <leftPen lineWidth="1.0"/>
+                    <bottomPen lineWidth="1.0"/>
+                    <rightPen lineWidth="1.0"/>
+                </box>
+                <textElement verticalAlignment="Middle">
+                    <font size="8" isBold="true"/>
+                </textElement>
+                <text><![CDATA[Nº de dias:]]></text>
+            </staticText>
+            <textField pattern="#,##0.00 %">
+                <reportElement x="138" y="194" width="154" height="14" uuid="4f58c3ce-e313-47b5-b199-7b6f1c691982"/>
+                <box leftPadding="4" rightPadding="4">
+                    <pen lineWidth="1.0"/>
+                    <topPen lineWidth="1.0"/>
+                    <leftPen lineWidth="1.0"/>
+                    <bottomPen lineWidth="1.0"/>
+                    <rightPen lineWidth="1.0"/>
+                </box>
+                <textElement verticalAlignment="Middle">
+                    <font size="8"/>
+                </textElement>
+                <textFieldExpression><![CDATA[$F{lab_semillas_resultados_tratamiento} != null ? $F{lab_semillas_resultados_tratamiento} : "-"]]></textFieldExpression>
+            </textField>
+            <textField pattern="#,##0">
+                <reportElement x="370" y="194" width="92" height="14" uuid="9bf0452d-3a0f-4388-9fd3-257d9e863a6d"/>
+                <box leftPadding="4" rightPadding="4">
+                    <pen lineWidth="1.0"/>
+                    <topPen lineWidth="1.0"/>
+                    <leftPen lineWidth="1.0"/>
+                    <bottomPen lineWidth="1.0"/>
+                    <rightPen lineWidth="1.0"/>
+                </box>
+                <textElement verticalAlignment="Middle">
+                    <font size="8"/>
+                </textElement>
+                <textFieldExpression><![CDATA[$F{lab_semillas_resultados_cantidad_dias} != null ? $F{lab_semillas_resultados_cantidad_dias} : "-"]]></textFieldExpression>
+            </textField>
+            <staticText>
+                <reportElement x="60" y="380" width="401" height="30" uuid="2bfd9dda-3190-4990-91e0-8fabda4749cb"/>
+                <textElement>
+                    <font size="8"/>
+                </textElement>
+                <text><![CDATA[Este Certificado de Analisis ampara a la Muestra               al Lote
 Certificado válido por 180 dias. La identificación del Lote es exclusiva responabilidad del cliente.]]></text>
-			</staticText>
-			<textField>
-				<reportElement x="238" y="378" width="18" height="12" uuid="53992347-c622-48b4-bffd-807e107c2546"/>
-				<box>
-					<topPen lineWidth="1.0"/>
-					<leftPen lineWidth="1.0"/>
-					<bottomPen lineWidth="1.0"/>
-					<rightPen lineWidth="1.0"/>
-				</box>
-				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font size="8"/>
-				</textElement>
-				<textFieldExpression><![CDATA[$F{lab_muestras_semillas_muestra_o_lote} == 1 ? "X" : ""]]></textFieldExpression>
-			</textField>
-			<textField>
-				<reportElement x="298" y="378" width="18" height="12" uuid="23f90ea4-8b05-439b-b552-49ee2e720861"/>
-				<box>
-					<topPen lineWidth="1.0"/>
-					<leftPen lineWidth="1.0"/>
-					<bottomPen lineWidth="1.0"/>
-					<rightPen lineWidth="1.0"/>
-				</box>
-				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font size="8"/>
-				</textElement>
-				<textFieldExpression><![CDATA[$F{lab_muestras_semillas_muestra_o_lote} != 1 ? "X" : ""]]></textFieldExpression>
-			</textField>
-			<textField pattern="#,##0.00 %">
-				<reportElement x="310" y="62" width="75" height="14" uuid="ddfaddca-8187-401b-9b06-1ea1495a3c27"/>
-				<box leftPadding="4" rightPadding="4">
-					<pen lineWidth="1.0"/>
-					<topPen lineWidth="1.0"/>
-					<leftPen lineWidth="1.0"/>
-					<bottomPen lineWidth="1.0"/>
-					<rightPen lineWidth="1.0"/>
-				</box>
-				<textElement textAlignment="Right" verticalAlignment="Middle">
-					<font size="8"/>
-				</textElement>
-				<textFieldExpression><![CDATA[$F{lab_semillas_resultados_materia_inerte_descripcion_3} != null ? $F{lab_semillas_resultados_materia_inerte_descripcion_3} : "-"]]></textFieldExpression>
-			</textField>
-			<textField pattern="#,##0.00 %">
-				<reportElement x="310" y="48" width="75" height="14" uuid="575246db-ef8c-4a41-b6f3-e6ba2bf8357a"/>
-				<box leftPadding="4" rightPadding="4">
-					<pen lineWidth="1.0"/>
-					<topPen lineWidth="1.0"/>
-					<leftPen lineWidth="1.0"/>
-					<bottomPen lineWidth="1.0"/>
-					<rightPen lineWidth="1.0"/>
-				</box>
-				<textElement textAlignment="Right" verticalAlignment="Middle">
-					<font size="8"/>
-				</textElement>
-				<textFieldExpression><![CDATA[$F{lab_semillas_resultados_materia_inerte_valor_3} != null ? $F{lab_semillas_resultados_materia_inerte_valor_3}/100 : "-"]]></textFieldExpression>
-			</textField>
-			<textField pattern="#,##0.00 %">
-				<reportElement x="385" y="62" width="75" height="14" uuid="2f798e83-3c98-44f6-96c7-7d159e889ccc"/>
-				<box leftPadding="4" rightPadding="4">
-					<pen lineWidth="1.0"/>
-					<topPen lineWidth="1.0"/>
-					<leftPen lineWidth="1.0"/>
-					<bottomPen lineWidth="1.0"/>
-					<rightPen lineWidth="1.0"/>
-				</box>
-				<textElement textAlignment="Right" verticalAlignment="Middle">
-					<font size="8"/>
-				</textElement>
-				<textFieldExpression><![CDATA[$F{lab_semillas_resultados_materia_inerte_descripcion_4} != null ? $F{lab_semillas_resultados_materia_inerte_descripcion_4} : "-"]]></textFieldExpression>
-			</textField>
-			<textField pattern="#,##0.00 %">
-				<reportElement x="385" y="48" width="75" height="14" uuid="4232a69a-6ef0-49da-8e9e-b068c137d933"/>
-				<box leftPadding="4" rightPadding="4">
-					<pen lineWidth="1.0"/>
-					<topPen lineWidth="1.0"/>
-					<leftPen lineWidth="1.0"/>
-					<bottomPen lineWidth="1.0"/>
-					<rightPen lineWidth="1.0"/>
-				</box>
-				<textElement textAlignment="Right" verticalAlignment="Middle">
-					<font size="8"/>
-				</textElement>
-				<textFieldExpression><![CDATA[$F{lab_semillas_resultados_materia_inerte_valor_4} != null ? $F{lab_semillas_resultados_materia_inerte_valor_4}/100 : "-"]]></textFieldExpression>
-			</textField>
-			<staticText>
-				<reportElement x="60" y="320" width="400" height="16" uuid="81d72db5-f08c-44b6-b5ef-c30c11772ee6"/>
-				<textElement verticalAlignment="Middle">
-					<font size="8" isBold="false"/>
-				</textElement>
-				<text><![CDATA[Observaciones:]]></text>
-			</staticText>
-			<textField pattern="#,##0.00 %">
-				<reportElement x="60" y="336" width="400" height="38" uuid="a8338e25-a7e9-4ac5-934d-e9c58b21a383"/>
-				<box leftPadding="4" rightPadding="4">
-					<pen lineWidth="1.0"/>
-					<topPen lineWidth="1.0"/>
-					<leftPen lineWidth="1.0"/>
-					<bottomPen lineWidth="1.0"/>
-					<rightPen lineWidth="1.0"/>
-				</box>
-				<textElement textAlignment="Left" verticalAlignment="Top">
-					<font size="8"/>
-				</textElement>
-				<textFieldExpression><![CDATA[$F{lab_semillas_resultados_observaciones} != null ? $F{lab_semillas_resultados_observaciones} : "-"]]></textFieldExpression>
-			</textField>
-		</band>
-	</detail>
-	<pageFooter>
-		<band height="110">
-			<staticText>
-				<reportElement x="59" y="10" width="119" height="19" uuid="ed93a2b2-ca69-410f-9de8-12b23af94d8f"/>
-				<box>
-					<topPen lineWidth="1.0"/>
-				</box>
-				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font size="8"/>
-				</textElement>
-				<text><![CDATA[Firma y Sello Analista]]></text>
-			</staticText>
-			<staticText>
-				<reportElement x="329" y="10" width="131" height="19" uuid="afcc0822-ef0b-49e3-a946-f21b0598296b"/>
-				<box>
-					<topPen lineWidth="1.0"/>
-				</box>
-				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font size="8"/>
-				</textElement>
-				<text><![CDATA[Firma y Sello Resp. Técnico]]></text>
-			</staticText>
-			<textField>
-				<reportElement x="430" y="30" width="80" height="20" uuid="2cb5f2c6-be16-4869-9d4b-a9fec78ebdcd"/>
-				<textElement textAlignment="Right">
-					<font size="8"/>
-				</textElement>
-				<textFieldExpression><![CDATA["Pag. "+$V{PAGE_NUMBER}+" de"]]></textFieldExpression>
-			</textField>
-			<textField evaluationTime="Report">
-				<reportElement x="510" y="30" width="40" height="20" uuid="67b784d2-5077-4eeb-99a6-2fc1c45ff203"/>
-				<textElement>
-					<font size="8"/>
-				</textElement>
-				<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
-			</textField>
-			<line>
-				<reportElement x="-1" y="29" width="555" height="1" uuid="307282b7-892b-4825-ba7a-5d5f1136ebc2"/>
-			</line>
-			<staticText>
-				<reportElement x="1" y="30" width="222" height="48" uuid="9295e9d6-bb01-42e2-9d0c-6aaeaf6c9b01"/>
-				<textElement>
-					<font size="8"/>
-				</textElement>
-				<text><![CDATA[Coopertiva Chortitzer Ltda.
+            </staticText>
+            <textField>
+                <reportElement x="238" y="378" width="18" height="12" uuid="53992347-c622-48b4-bffd-807e107c2546"/>
+                <box>
+                    <topPen lineWidth="1.0"/>
+                    <leftPen lineWidth="1.0"/>
+                    <bottomPen lineWidth="1.0"/>
+                    <rightPen lineWidth="1.0"/>
+                </box>
+                <textElement textAlignment="Center" verticalAlignment="Middle">
+                    <font size="8"/>
+                </textElement>
+                <textFieldExpression><![CDATA[$F{lab_muestras_semillas_muestra_o_lote} == 1 ? "X" : ""]]></textFieldExpression>
+            </textField>
+            <textField>
+                <reportElement x="298" y="378" width="18" height="12" uuid="23f90ea4-8b05-439b-b552-49ee2e720861"/>
+                <box>
+                    <topPen lineWidth="1.0"/>
+                    <leftPen lineWidth="1.0"/>
+                    <bottomPen lineWidth="1.0"/>
+                    <rightPen lineWidth="1.0"/>
+                </box>
+                <textElement textAlignment="Center" verticalAlignment="Middle">
+                    <font size="8"/>
+                </textElement>
+                <textFieldExpression><![CDATA[$F{lab_muestras_semillas_muestra_o_lote} != 1 ? "X" : ""]]></textFieldExpression>
+            </textField>
+            <textField pattern="#,##0.00 %">
+                <reportElement x="310" y="62" width="75" height="14" uuid="ddfaddca-8187-401b-9b06-1ea1495a3c27"/>
+                <box leftPadding="4" rightPadding="4">
+                    <pen lineWidth="1.0"/>
+                    <topPen lineWidth="1.0"/>
+                    <leftPen lineWidth="1.0"/>
+                    <bottomPen lineWidth="1.0"/>
+                    <rightPen lineWidth="1.0"/>
+                </box>
+                <textElement textAlignment="Right" verticalAlignment="Middle">
+                    <font size="8"/>
+                </textElement>
+                <textFieldExpression><![CDATA[$F{lab_semillas_resultados_materia_inerte_descripcion_3} != null ? $F{lab_semillas_resultados_materia_inerte_descripcion_3} : "-"]]></textFieldExpression>
+            </textField>
+            <textField pattern="#,##0.00 %">
+                <reportElement x="310" y="48" width="75" height="14" uuid="575246db-ef8c-4a41-b6f3-e6ba2bf8357a"/>
+                <box leftPadding="4" rightPadding="4">
+                    <pen lineWidth="1.0"/>
+                    <topPen lineWidth="1.0"/>
+                    <leftPen lineWidth="1.0"/>
+                    <bottomPen lineWidth="1.0"/>
+                    <rightPen lineWidth="1.0"/>
+                </box>
+                <textElement textAlignment="Right" verticalAlignment="Middle">
+                    <font size="8"/>
+                </textElement>
+                <textFieldExpression><![CDATA[$F{lab_semillas_resultados_materia_inerte_valor_3} != null ? $F{lab_semillas_resultados_materia_inerte_valor_3}/100 : "-"]]></textFieldExpression>
+            </textField>
+            <textField pattern="#,##0.00 %">
+                <reportElement x="385" y="62" width="75" height="14" uuid="2f798e83-3c98-44f6-96c7-7d159e889ccc"/>
+                <box leftPadding="4" rightPadding="4">
+                    <pen lineWidth="1.0"/>
+                    <topPen lineWidth="1.0"/>
+                    <leftPen lineWidth="1.0"/>
+                    <bottomPen lineWidth="1.0"/>
+                    <rightPen lineWidth="1.0"/>
+                </box>
+                <textElement textAlignment="Right" verticalAlignment="Middle">
+                    <font size="8"/>
+                </textElement>
+                <textFieldExpression><![CDATA[$F{lab_semillas_resultados_materia_inerte_descripcion_4} != null ? $F{lab_semillas_resultados_materia_inerte_descripcion_4} : "-"]]></textFieldExpression>
+            </textField>
+            <textField pattern="#,##0.00 %">
+                <reportElement x="385" y="48" width="75" height="14" uuid="4232a69a-6ef0-49da-8e9e-b068c137d933"/>
+                <box leftPadding="4" rightPadding="4">
+                    <pen lineWidth="1.0"/>
+                    <topPen lineWidth="1.0"/>
+                    <leftPen lineWidth="1.0"/>
+                    <bottomPen lineWidth="1.0"/>
+                    <rightPen lineWidth="1.0"/>
+                </box>
+                <textElement textAlignment="Right" verticalAlignment="Middle">
+                    <font size="8"/>
+                </textElement>
+                <textFieldExpression><![CDATA[$F{lab_semillas_resultados_materia_inerte_valor_4} != null ? $F{lab_semillas_resultados_materia_inerte_valor_4}/100 : "-"]]></textFieldExpression>
+            </textField>
+            <staticText>
+                <reportElement x="60" y="320" width="400" height="16" uuid="81d72db5-f08c-44b6-b5ef-c30c11772ee6"/>
+                <textElement verticalAlignment="Middle">
+                    <font size="8" isBold="false"/>
+                </textElement>
+                <text><![CDATA[Observaciones:]]></text>
+            </staticText>
+            <textField pattern="#,##0.00 %">
+                <reportElement x="60" y="336" width="400" height="38" uuid="a8338e25-a7e9-4ac5-934d-e9c58b21a383"/>
+                <box leftPadding="4" rightPadding="4">
+                    <pen lineWidth="1.0"/>
+                    <topPen lineWidth="1.0"/>
+                    <leftPen lineWidth="1.0"/>
+                    <bottomPen lineWidth="1.0"/>
+                    <rightPen lineWidth="1.0"/>
+                </box>
+                <textElement textAlignment="Left" verticalAlignment="Top">
+                    <font size="8"/>
+                </textElement>
+                <textFieldExpression><![CDATA[$F{lab_semillas_resultados_observaciones} != null ? $F{lab_semillas_resultados_observaciones} : "-"]]></textFieldExpression>
+            </textField>
+        </band>
+    </detail>
+    <pageFooter>
+        <band height="110">
+            <staticText>
+                <reportElement x="59" y="10" width="119" height="19" uuid="ed93a2b2-ca69-410f-9de8-12b23af94d8f"/>
+                <box>
+                    <topPen lineWidth="1.0"/>
+                </box>
+                <textElement textAlignment="Center" verticalAlignment="Middle">
+                    <font size="8"/>
+                </textElement>
+                <text><![CDATA[Firma y Sello Analista]]></text>
+            </staticText>
+            <staticText>
+                <reportElement x="329" y="10" width="131" height="19" uuid="afcc0822-ef0b-49e3-a946-f21b0598296b"/>
+                <box>
+                    <topPen lineWidth="1.0"/>
+                </box>
+                <textElement textAlignment="Center" verticalAlignment="Middle">
+                    <font size="8"/>
+                </textElement>
+                <text><![CDATA[Firma y Sello Resp. Técnico]]></text>
+            </staticText>
+            <textField>
+                <reportElement x="430" y="30" width="80" height="20" uuid="2cb5f2c6-be16-4869-9d4b-a9fec78ebdcd"/>
+                <textElement textAlignment="Right">
+                    <font size="8"/>
+                </textElement>
+                <textFieldExpression><![CDATA["Pag. "+$V{PAGE_NUMBER}+" de"]]></textFieldExpression>
+            </textField>
+            <textField evaluationTime="Report">
+                <reportElement x="510" y="30" width="40" height="20" uuid="67b784d2-5077-4eeb-99a6-2fc1c45ff203"/>
+                <textElement>
+                    <font size="8"/>
+                </textElement>
+                <textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+            </textField>
+            <line>
+                <reportElement x="-1" y="29" width="555" height="1" uuid="307282b7-892b-4825-ba7a-5d5f1136ebc2"/>
+            </line>
+            <staticText>
+                <reportElement x="1" y="30" width="222" height="48" uuid="9295e9d6-bb01-42e2-9d0c-6aaeaf6c9b01"/>
+                <textElement>
+                    <font size="8"/>
+                </textElement>
+                <text><![CDATA[Coopertiva Chortitzer Ltda.
 Avda. Central Nº926 - Loma Plata - Chaco
 Tel.: +595 492 418 614
 eMail: labindustria@chortitzer.com.py ]]></text>
-			</staticText>
-		</band>
-	</pageFooter>
+            </staticText>
+        </band>
+    </pageFooter>
 </jasperReport>

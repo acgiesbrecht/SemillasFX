@@ -6,6 +6,7 @@
 package com.chortitzer.lab.semillasjfx.controller;
 
 import com.chortitzer.lab.semillasjfx.App;
+import com.chortitzer.lab.semillasjfx.utils.Utils;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
@@ -78,7 +79,7 @@ public class MenuController implements Initializable {
             AnchorPane pane = FXMLLoader.load(getClass().getResource(paneUrl));
             App.getRoot().setCenter(pane);
         } catch (Exception ex) {
-            App.showException(Thread.currentThread().getStackTrace()[1].getMethodName(), ex.getMessage(), ex);
+            Utils.showException(ex.toString(), ex.getMessage(), ex);
         }
     }
 

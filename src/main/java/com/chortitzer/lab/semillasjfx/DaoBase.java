@@ -4,6 +4,7 @@
  */
 package com.chortitzer.lab.semillasjfx;
 
+import com.chortitzer.lab.semillasjfx.utils.Utils;
 import com.panemu.tiwulfx.common.TableCriteria;
 import com.panemu.tiwulfx.common.TableData;
 import java.util.ArrayList;
@@ -21,7 +22,6 @@ import javax.persistence.criteria.JoinType;
 import javax.persistence.criteria.Order;
 import javax.persistence.criteria.Predicate;
 import javax.persistence.criteria.Root;
-import javax.persistence.criteria.Selection;
 
 /**
  *
@@ -31,7 +31,7 @@ public class DaoBase<T> {
 
     private Class<T> voClass;
 //    EntityManager em = JavaApplication6.factory.createEntityManager();
-    EntityManager em;
+    EntityManager em = App.factory.createEntityManager();
 
     public DaoBase(Class<T> clazz) {
 //        this.em = em;
@@ -40,7 +40,6 @@ public class DaoBase<T> {
 
     public List<T> getList() {
         try {
-            em = App.factory.createEntityManager();
 
             CriteriaBuilder builder = em.getCriteriaBuilder();
             CriteriaQuery<T> cq = builder.createQuery(voClass);
@@ -53,7 +52,7 @@ public class DaoBase<T> {
             List<T> result = typedQuery.getResultList();
             return result;
         } catch (Exception ex) {
-            //App.showException(Thread.currentThread().getStackTrace()[1].getMethodName(), ex.getMessage(), ex);
+            ex.printStackTrace();
             return null;
         }
     }
@@ -66,7 +65,7 @@ public class DaoBase<T> {
         try {
             return this.fetch(startIndex, filteredColumns, sortedColumns, sortingVersus, maxResult, new ArrayList<String>());
         } catch (Exception ex) {
-            //App.showException(Thread.currentThread().getStackTrace()[1].getMethodName(), ex.getMessage(), ex);
+            ex.printStackTrace();
             return null;
         }
     }
@@ -77,7 +76,7 @@ public class DaoBase<T> {
             List<SortType> sortingVersus,
             int maxResult, List<String> lstJoin) {
         try {
-            em = App.factory.createEntityManager();
+            //em = App.factory.createEntityManager();
             CriteriaBuilder builder = em.getCriteriaBuilder();
             CriteriaQuery<T> cq = builder.createQuery(voClass);
             Root<T> root = cq.from(voClass);
@@ -112,10 +111,10 @@ public class DaoBase<T> {
                 result.remove(maxResult);// remove the last row
             }
             TableData tb = new TableData(new ArrayList<>(result), moreRows, count);
-            em.close();
+            //em.close();
             return tb;
         } catch (Exception ex) {
-            // App.showException(Thread.currentThread().getStackTrace()[1].getMethodName(), ex.getMessage(), ex);
+            ex.printStackTrace();
             return null;
         }
     }
@@ -141,7 +140,7 @@ public class DaoBase<T> {
             }
             return mapJoin;
         } catch (Exception ex) {
-            // App.showException(Thread.currentThread().getStackTrace()[1].getMethodName(), ex.getMessage(), ex);
+            ex.printStackTrace();
             return null;
         }
     }
@@ -161,7 +160,7 @@ public class DaoBase<T> {
 
             return result;
         } catch (Exception ex) {
-            //  App.showException(Thread.currentThread().getStackTrace()[1].getMethodName(), ex.getMessage(), ex);
+            ex.printStackTrace();
             return -1;
         }
     }
@@ -243,7 +242,7 @@ public class DaoBase<T> {
             predicates = lstPredicates.toArray(predicates);
             return predicates;
         } catch (Exception ex) {
-            //   App.showException(Thread.currentThread().getStackTrace()[1].getMethodName(), ex.getMessage(), ex);
+            ex.printStackTrace();
             return null;
         }
     }
@@ -266,19 +265,19 @@ public class DaoBase<T> {
 //    }
     public List<T> insert(List<T> records) {
         try {
-            em = App.factory.createEntityManager();
+            //em = App.factory.createEntityManager();
             em.getTransaction().begin();
             for (T record : records) {
                 em.persist(record);
             }
             em.getTransaction().commit();
-            em.close();
+            //em.close();
         } catch (Exception ex) {
             if (em.isOpen()) {
                 em.getTransaction().rollback();
-                em.close();
+                //em.close();
             }
-            // App.showException(Thread.currentThread().getStackTrace()[1].getMethodName(), ex.getMessage(), ex);
+            ex.printStackTrace();
             throw ex;
         }
         return records;
@@ -286,17 +285,17 @@ public class DaoBase<T> {
 
     public T insert(T record) {
         try {
-            em = App.factory.createEntityManager();
+            //em = App.factory.createEntityManager();
             em.getTransaction().begin();
             em.persist(record);
             em.getTransaction().commit();
-            em.close();
+            //em.close();
         } catch (Exception ex) {
             if (em.isOpen()) {
                 em.getTransaction().rollback();
-                em.close();
+                //em.close();
             }
-            //  App.showException(Thread.currentThread().getStackTrace()[1].getMethodName(), ex.getMessage(), ex);
+            ex.printStackTrace();
             throw ex;
         }
         return record;
@@ -304,30 +303,30 @@ public class DaoBase<T> {
 
     public List<T> delete(List<T> records) {
         try {
-            em = App.factory.createEntityManager();
+            //em = App.factory.createEntityManager();
             em.getTransaction().begin();
             for (T record : records) {
                 em.remove(em.merge(record));
             }
             em.getTransaction().commit();
-            em.close();
+            //em.close();
             return records;
         } catch (Exception ex) {
-            //   App.showException(Thread.currentThread().getStackTrace()[1].getMethodName(), ex.getMessage(), ex);
+            ex.printStackTrace();
             return null;
         }
     }
 
     public T delete(T record) {
         try {
-            em = App.factory.createEntityManager();
+            //em = App.factory.createEntityManager();
             em.getTransaction().begin();
             em.remove(record);
             em.getTransaction().commit();
-            em.close();
+            //em.close();
             return record;
         } catch (Exception ex) {
-            //   App.showException(Thread.currentThread().getStackTrace()[1].getMethodName(), ex.getMessage(), ex);
+            ex.printStackTrace();
             return null;
         }
     }
@@ -339,37 +338,37 @@ public class DaoBase<T> {
          */
         try {
             List<T> result = new ArrayList<>();
-            em = App.factory.createEntityManager();
+            //em = App.factory.createEntityManager();
             em.getTransaction().begin();
             for (T record : records) {
                 result.add(em.merge(record));
             }
             em.getTransaction().commit();
-            em.close();
+            //em.close();
             return result;
         } catch (Exception ex) {
-            //     App.showException(Thread.currentThread().getStackTrace()[1].getMethodName(), ex.getMessage(), ex);
+            ex.printStackTrace();
             return null;
         }
     }
 
     public T update(T record) {
         try {
-            em = App.factory.createEntityManager();
+            //em = App.factory.createEntityManager();
             em.getTransaction().begin();
             record = em.merge(record);
             em.getTransaction().commit();
-            em.close();
+            //em.close();
             return record;
         } catch (Exception ex) {
-            //      App.showException(Thread.currentThread().getStackTrace()[1].getMethodName(), ex.getMessage(), ex);
+            ex.printStackTrace();
             return null;
         }
     }
 
     public List<T> initRelationship(List<T> records, String joinTable) {
         try {
-            em = App.factory.createEntityManager();
+            //em = App.factory.createEntityManager();
             CriteriaBuilder builder = em.getCriteriaBuilder();
             CriteriaQuery<T> cq = builder.createQuery(voClass);
             Root<T> root = cq.from(voClass);
@@ -379,17 +378,17 @@ public class DaoBase<T> {
             cq.where(root.in(records));
             TypedQuery<T> typedQuery = em.createQuery(cq);
             List<T> result = typedQuery.getResultList();
-            em.close();
+            //em.close();
             return result;
         } catch (Exception ex) {
-            //      App.showException(Thread.currentThread().getStackTrace()[1].getMethodName(), ex.getMessage(), ex);
+            ex.printStackTrace();
             return null;
         }
     }
 
     public T initRelationship(T record, String joinTable) {
         try {
-            em = App.factory.createEntityManager();
+            //em = App.factory.createEntityManager();
             CriteriaBuilder builder = em.getCriteriaBuilder();
             CriteriaQuery<T> cq = builder.createQuery(voClass);
             Root<T> root = cq.from(voClass);
@@ -399,10 +398,10 @@ public class DaoBase<T> {
             cq.where(builder.equal(root, record));
             TypedQuery<T> typedQuery = em.createQuery(cq);
             T result = typedQuery.getSingleResult();
-            em.close();
+            //em.close();
             return result;
         } catch (Exception ex) {
-            //       App.showException(Thread.currentThread().getStackTrace()[1].getMethodName(), ex.getMessage(), ex);
+            ex.printStackTrace();
             return null;
         }
     }

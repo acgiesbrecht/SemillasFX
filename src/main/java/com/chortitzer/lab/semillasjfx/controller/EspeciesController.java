@@ -5,9 +5,9 @@
  */
 package com.chortitzer.lab.semillasjfx.controller;
 
-import com.chortitzer.lab.semillasjfx.App;
 import com.chortitzer.lab.semillasjfx.DaoBase;
 import com.chortitzer.lab.semillasjfx.domain.LabSemillasEspecies;
+import com.chortitzer.lab.semillasjfx.utils.Utils;
 import com.panemu.tiwulfx.common.TableCriteria;
 import com.panemu.tiwulfx.common.TableData;
 import com.panemu.tiwulfx.table.NumberColumn;
@@ -17,8 +17,6 @@ import com.panemu.tiwulfx.table.TextColumn;
 import java.net.URL;
 import java.util.List;
 import java.util.ResourceBundle;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.TableColumn;
@@ -60,7 +58,7 @@ public class EspeciesController implements Initializable {
             masterTable.addColumn(cId, cEspecie, cVariedad, cNombreComun);
             masterTable.reload();
         } catch (Exception ex) {
-            App.showException(Thread.currentThread().getStackTrace()[1].getMethodName(), ex.getMessage(), ex);
+            Utils.showException(ex.toString(), ex.getMessage(), ex);
         }
     }
 

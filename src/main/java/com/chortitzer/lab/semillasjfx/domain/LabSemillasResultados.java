@@ -7,6 +7,7 @@ package com.chortitzer.lab.semillasjfx.domain;
 
 import java.io.Serializable;
 import java.math.BigDecimal;
+import java.time.LocalDate;
 import java.util.Date;
 import javax.persistence.Basic;
 import javax.persistence.Column;
@@ -17,8 +18,6 @@ import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
 import javax.xml.bind.annotation.XmlRootElement;
 
 /**
@@ -29,25 +28,44 @@ import javax.xml.bind.annotation.XmlRootElement;
 @Table(name = "lab_semillas_resultados")
 @XmlRootElement
 @NamedQueries({
-    @NamedQuery(name = "LabSemillasResultados.findAll", query = "SELECT l FROM LabSemillasResultados l"),
-    @NamedQuery(name = "LabSemillasResultados.findByIdMuestra", query = "SELECT l FROM LabSemillasResultados l WHERE l.idMuestra = :idMuestra"),
-    @NamedQuery(name = "LabSemillasResultados.findByFechaAnalisis", query = "SELECT l FROM LabSemillasResultados l WHERE l.fechaAnalisis = :fechaAnalisis"),
-    @NamedQuery(name = "LabSemillasResultados.findBySemillasPuras", query = "SELECT l FROM LabSemillasResultados l WHERE l.semillasPuras = :semillasPuras"),
-    @NamedQuery(name = "LabSemillasResultados.findByMateriaInerteDescripcion1", query = "SELECT l FROM LabSemillasResultados l WHERE l.materiaInerteDescripcion1 = :materiaInerteDescripcion1"),
-    @NamedQuery(name = "LabSemillasResultados.findByMateriaInerteValor1", query = "SELECT l FROM LabSemillasResultados l WHERE l.materiaInerteValor1 = :materiaInerteValor1"),
-    @NamedQuery(name = "LabSemillasResultados.findByMateriaInerteDescripcion2", query = "SELECT l FROM LabSemillasResultados l WHERE l.materiaInerteDescripcion2 = :materiaInerteDescripcion2"),
-    @NamedQuery(name = "LabSemillasResultados.findByMateriaInerteValor2", query = "SELECT l FROM LabSemillasResultados l WHERE l.materiaInerteValor2 = :materiaInerteValor2"),
-    @NamedQuery(name = "LabSemillasResultados.findByOtrasSemillasDescripcion", query = "SELECT l FROM LabSemillasResultados l WHERE l.otrasSemillasDescripcion = :otrasSemillasDescripcion"),
-    @NamedQuery(name = "LabSemillasResultados.findByOtrasSemillasValor", query = "SELECT l FROM LabSemillasResultados l WHERE l.otrasSemillasValor = :otrasSemillasValor"),
-    @NamedQuery(name = "LabSemillasResultados.findByPlantasNormales", query = "SELECT l FROM LabSemillasResultados l WHERE l.plantasNormales = :plantasNormales"),
-    @NamedQuery(name = "LabSemillasResultados.findBySemillasDuras", query = "SELECT l FROM LabSemillasResultados l WHERE l.semillasDuras = :semillasDuras"),
-    @NamedQuery(name = "LabSemillasResultados.findByPlantasAnormales", query = "SELECT l FROM LabSemillasResultados l WHERE l.plantasAnormales = :plantasAnormales"),
-    @NamedQuery(name = "LabSemillasResultados.findBySemillasMuertas", query = "SELECT l FROM LabSemillasResultados l WHERE l.semillasMuertas = :semillasMuertas"),
-    @NamedQuery(name = "LabSemillasResultados.findByCantidadDias", query = "SELECT l FROM LabSemillasResultados l WHERE l.cantidadDias = :cantidadDias"),
-    @NamedQuery(name = "LabSemillasResultados.findByHumedad", query = "SELECT l FROM LabSemillasResultados l WHERE l.humedad = :humedad"),
-    @NamedQuery(name = "LabSemillasResultados.findByTemperatura", query = "SELECT l FROM LabSemillasResultados l WHERE l.temperatura = :temperatura"),
-    @NamedQuery(name = "LabSemillasResultados.findByTratamiento", query = "SELECT l FROM LabSemillasResultados l WHERE l.tratamiento = :tratamiento"),
-    @NamedQuery(name = "LabSemillasResultados.findBySustrato", query = "SELECT l FROM LabSemillasResultados l WHERE l.sustrato = :sustrato"),
+    @NamedQuery(name = "LabSemillasResultados.findAll", query = "SELECT l FROM LabSemillasResultados l")
+    ,
+    @NamedQuery(name = "LabSemillasResultados.findByIdMuestra", query = "SELECT l FROM LabSemillasResultados l WHERE l.idMuestra = :idMuestra")
+    ,
+    @NamedQuery(name = "LabSemillasResultados.findByFechaAnalisis", query = "SELECT l FROM LabSemillasResultados l WHERE l.fechaAnalisis = :fechaAnalisis")
+    ,
+    @NamedQuery(name = "LabSemillasResultados.findBySemillasPuras", query = "SELECT l FROM LabSemillasResultados l WHERE l.semillasPuras = :semillasPuras")
+    ,
+    @NamedQuery(name = "LabSemillasResultados.findByMateriaInerteDescripcion1", query = "SELECT l FROM LabSemillasResultados l WHERE l.materiaInerteDescripcion1 = :materiaInerteDescripcion1")
+    ,
+    @NamedQuery(name = "LabSemillasResultados.findByMateriaInerteValor1", query = "SELECT l FROM LabSemillasResultados l WHERE l.materiaInerteValor1 = :materiaInerteValor1")
+    ,
+    @NamedQuery(name = "LabSemillasResultados.findByMateriaInerteDescripcion2", query = "SELECT l FROM LabSemillasResultados l WHERE l.materiaInerteDescripcion2 = :materiaInerteDescripcion2")
+    ,
+    @NamedQuery(name = "LabSemillasResultados.findByMateriaInerteValor2", query = "SELECT l FROM LabSemillasResultados l WHERE l.materiaInerteValor2 = :materiaInerteValor2")
+    ,
+    @NamedQuery(name = "LabSemillasResultados.findByOtrasSemillasDescripcion", query = "SELECT l FROM LabSemillasResultados l WHERE l.otrasSemillasDescripcion = :otrasSemillasDescripcion")
+    ,
+    @NamedQuery(name = "LabSemillasResultados.findByOtrasSemillasValor", query = "SELECT l FROM LabSemillasResultados l WHERE l.otrasSemillasValor = :otrasSemillasValor")
+    ,
+    @NamedQuery(name = "LabSemillasResultados.findByPlantasNormales", query = "SELECT l FROM LabSemillasResultados l WHERE l.plantasNormales = :plantasNormales")
+    ,
+    @NamedQuery(name = "LabSemillasResultados.findBySemillasDuras", query = "SELECT l FROM LabSemillasResultados l WHERE l.semillasDuras = :semillasDuras")
+    ,
+    @NamedQuery(name = "LabSemillasResultados.findByPlantasAnormales", query = "SELECT l FROM LabSemillasResultados l WHERE l.plantasAnormales = :plantasAnormales")
+    ,
+    @NamedQuery(name = "LabSemillasResultados.findBySemillasMuertas", query = "SELECT l FROM LabSemillasResultados l WHERE l.semillasMuertas = :semillasMuertas")
+    ,
+    @NamedQuery(name = "LabSemillasResultados.findByCantidadDias", query = "SELECT l FROM LabSemillasResultados l WHERE l.cantidadDias = :cantidadDias")
+    ,
+    @NamedQuery(name = "LabSemillasResultados.findByHumedad", query = "SELECT l FROM LabSemillasResultados l WHERE l.humedad = :humedad")
+    ,
+    @NamedQuery(name = "LabSemillasResultados.findByTemperatura", query = "SELECT l FROM LabSemillasResultados l WHERE l.temperatura = :temperatura")
+    ,
+    @NamedQuery(name = "LabSemillasResultados.findByTratamiento", query = "SELECT l FROM LabSemillasResultados l WHERE l.tratamiento = :tratamiento")
+    ,
+    @NamedQuery(name = "LabSemillasResultados.findBySustrato", query = "SELECT l FROM LabSemillasResultados l WHERE l.sustrato = :sustrato")
+    ,
     @NamedQuery(name = "LabSemillasResultados.findBySemillasViables", query = "SELECT l FROM LabSemillasResultados l WHERE l.semillasViables = :semillasViables")})
 public class LabSemillasResultados implements Serializable {
 
@@ -57,8 +75,7 @@ public class LabSemillasResultados implements Serializable {
     @Column(name = "id_muestra")
     private Integer idMuestra;
     @Column(name = "fecha_analisis")
-    @Temporal(TemporalType.TIMESTAMP)
-    private Date fechaAnalisis;
+    private LocalDate fechaAnalisis;
     // @Max(value=?)  @Min(value=?)//if you know range of your decimal fields consider using these annotations to enforce field validation
     @Column(name = "semillas_puras")
     private BigDecimal semillasPuras;
@@ -123,11 +140,11 @@ public class LabSemillasResultados implements Serializable {
         this.idMuestra = idMuestra;
     }
 
-    public Date getFechaAnalisis() {
+    public LocalDate getFechaAnalisis() {
         return fechaAnalisis;
     }
 
-    public void setFechaAnalisis(Date fechaAnalisis) {
+    public void setFechaAnalisis(LocalDate fechaAnalisis) {
         this.fechaAnalisis = fechaAnalisis;
     }
 

@@ -12,6 +12,7 @@ import com.chortitzer.lab.semillasjfx.domain.LabMuestrasSemillas;
 import com.chortitzer.lab.semillasjfx.domain.LabSemillasCategorias;
 import com.chortitzer.lab.semillasjfx.domain.LabSemillasEspecies;
 import com.chortitzer.lab.semillasjfx.domain.LabSemillasMuestreadores;
+import com.chortitzer.lab.semillasjfx.utils.Utils;
 import com.panemu.tiwulfx.common.TableCriteria;
 import com.panemu.tiwulfx.common.TableData;
 import com.panemu.tiwulfx.table.ComboBoxColumn;
@@ -55,19 +56,21 @@ public class MuestrasController implements Initializable {
 
             NumberColumn<LabMuestrasSemillas, Integer> cId = new NumberColumn<>("id", Integer.class);
             cId.setText("ID");
+            cId.setRequired(true);
             cId.setSortType(TableColumn.SortType.DESCENDING);
-            cId.setEditable(false);
 
             TextColumn<LabMuestrasSemillas> cIdentificacion = new TextColumn<>("identificacionOriginal");
             cIdentificacion.setText("Identificacion Original");
 
             LocalDateColumn<LabMuestrasSemillas> cFechaEntrada = new LocalDateColumn<>("fechaEntrada");
             cFechaEntrada.setText("Fecha Entrada");
+            cFechaEntrada.setRequired(true);
 
             ComboBoxColumn<LabMuestrasSemillas, Integer> cMuestraOLote = new ComboBoxColumn<>("muestraOLote");
             cMuestraOLote.addItem("Muestra Simple", 1);
             cMuestraOLote.addItem("Muestra de Lote", 0);
             cMuestraOLote.setText("Tipo de Muestra");
+            cMuestraOLote.setRequired(true);
 
             TextColumn<LabMuestrasSemillas> cZafra = new TextColumn<>("zafra");
             cZafra.setText("Zafra");
@@ -87,6 +90,7 @@ public class MuestrasController implements Initializable {
             lLabSemillasMuestreadores.forEach((p) -> {
                 cMuestreador.addItem(p.getNombre(), p);
             });
+            cMuestreador.setRequired(true);
 
             TypeAheadColumn<LabMuestrasSemillas, LabSemillasEspecies> cEspecie = new TypeAheadColumn<>("idEspecie");
             cEspecie.setText("Especie");
@@ -117,7 +121,7 @@ public class MuestrasController implements Initializable {
             masterTable.reload();
 
         } catch (Exception ex) {
-            App.showException(Thread.currentThread().getStackTrace()[1].getMethodName(), ex.getMessage(), ex);
+            Utils.showException(ex.toString(), ex.getMessage(), ex);
         }
     }
 
