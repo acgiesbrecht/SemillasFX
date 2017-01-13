@@ -7,6 +7,7 @@ package com.chortitzer.lab.semillasjfx.controller;
 
 import com.chortitzer.lab.semillasjfx.DaoBase;
 import com.chortitzer.lab.semillasjfx.domain.LabSemillasResultados;
+import com.chortitzer.lab.semillasjfx.utils.Utils;
 import com.panemu.tiwulfx.form.Form;
 import com.panemu.tiwulfx.form.LocalDateControl;
 import com.panemu.tiwulfx.form.NumberControl;
@@ -50,15 +51,20 @@ public class ResultadosEditController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        btnSave.setOnAction(eventHandler);
-        btnEdit.setOnAction(eventHandler);
+        try {
+            btnSave.setOnAction(eventHandler);
+            btnEdit.setOnAction(eventHandler);
 
-        btnSave.disableProperty()
-                .bind(labSemillasResultadosForm.modeProperty().isEqualTo(Form.Mode.READ));
-        btnEdit.disableProperty()
-                .bind(labSemillasResultadosForm.modeProperty().isNotEqualTo(Form.Mode.READ));
+            btnSave.disableProperty()
+                    .bind(labSemillasResultadosForm.modeProperty().isEqualTo(Form.Mode.READ));
+            btnEdit.disableProperty()
+                    .bind(labSemillasResultadosForm.modeProperty().isNotEqualTo(Form.Mode.READ));
 
-        labSemillasResultadosForm.bindChildren();
+            labSemillasResultadosForm.bindChildren();
+        } catch (Exception ex) {
+            ex.printStackTrace();
+            Utils.showException("Error", ex.getMessage(), ex);
+        }
     }
 
     private EventHandler<ActionEvent> eventHandler = new EventHandler<ActionEvent>() {

@@ -49,6 +49,8 @@ import net.sf.jasperreports.engine.JasperFillManager;
 import net.sf.jasperreports.engine.JasperPrint;
 import net.sf.jasperreports.engine.JasperPrintManager;
 import net.sf.jasperreports.engine.JasperReport;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 /**
  * FXML Controller class
@@ -58,6 +60,7 @@ import net.sf.jasperreports.engine.JasperReport;
 public class ResultadosController implements Initializable {
 
     private DaoBase<LabSemillasResultados> daoLabSemillasResultados = new DaoBase<>(LabSemillasResultados.class);
+    private static final Logger LOGGER = LogManager.getLogger(LabSemillasResultados.class);
 
     @FXML
     private TableControl<LabSemillasResultados> masterTable;
@@ -95,40 +98,52 @@ public class ResultadosController implements Initializable {
             cId.setEditable(false);
 
             LocalDateColumn<LabSemillasResultados> cFechaAnalisis = new LocalDateColumn<>("fechaAnalisis");
-            cId.setText("fecha de Analsis");
+            cFechaAnalisis.setText("fecha de Analsis");
 
             NumberColumn<LabSemillasResultados, BigDecimal> cSemillasPuras = new NumberColumn<>("semillasPuras", BigDecimal.class);
             cSemillasPuras.setText("Semillas Puras");
 
             TextColumn<LabSemillasResultados> cMateriaInerteDescripcion1 = new TextColumn<>("materiaInerteDescripcion1");
             cMateriaInerteDescripcion1.setText("Materia Inerte Descripcion 1");
+            cMateriaInerteDescripcion1.setMinWidth(150);
 
             NumberColumn<LabSemillasResultados, BigDecimal> cMateriaInerteValor1 = new NumberColumn<>("materiaInerteValor1", BigDecimal.class);
             cMateriaInerteValor1.setText("Materia Inerte Valor 1");
+            cMateriaInerteValor1.setMinWidth(150);
 
             TextColumn<LabSemillasResultados> cMateriaInerteDescripcion2 = new TextColumn<>("materiaInerteDescripcion2");
             cMateriaInerteDescripcion2.setText("Materia Inerte Descripcion 2");
+            cMateriaInerteDescripcion2.setMinWidth(150);
 
             NumberColumn<LabSemillasResultados, BigDecimal> cMateriaInerteValor2 = new NumberColumn<>("materiaInerteValor2", BigDecimal.class);
             cMateriaInerteValor2.setText("Materia Inerte Valor 2");
+            cMateriaInerteValor2.setMinWidth(150);
 
             TextColumn<LabSemillasResultados> cMateriaInerteDescripcion3 = new TextColumn<>("materiaInerteDescripcion3");
             cMateriaInerteDescripcion3.setText("Materia Inerte Descripcion 3");
+            cMateriaInerteDescripcion3.setMinWidth(150);
 
             NumberColumn<LabSemillasResultados, BigDecimal> cMateriaInerteValor3 = new NumberColumn<>("materiaInerteValor3", BigDecimal.class);
             cMateriaInerteValor3.setText("Materia Inerte Valor 3");
+            cMateriaInerteValor3.setMinWidth(150);
 
             TextColumn<LabSemillasResultados> cMateriaInerteDescripcion4 = new TextColumn<>("materiaInerteDescripcion4");
             cMateriaInerteDescripcion4.setText("Materia Inerte Descripcion 4");
+            cMateriaInerteDescripcion4.setMinWidth(150);
 
             NumberColumn<LabSemillasResultados, BigDecimal> cMateriaInerteValor4 = new NumberColumn<>("materiaInerteValor4", BigDecimal.class);
             cMateriaInerteValor4.setText("Materia Inerte Valor 4");
+            cMateriaInerteValor4.setMinWidth(150);
 
             masterTable.addColumn(cId, cFechaAnalisis, cSemillasPuras,
                     cMateriaInerteDescripcion1, cMateriaInerteValor1,
                     cMateriaInerteDescripcion2, cMateriaInerteValor2,
                     cMateriaInerteDescripcion3, cMateriaInerteValor3,
                     cMateriaInerteDescripcion4, cMateriaInerteValor4);
+
+            masterTable.setVisibleComponents(false, TableControl.Component.BUTTON_DELETE);
+            masterTable.setVisibleComponents(false, TableControl.Component.BUTTON_INSERT);
+            masterTable.setVisibleComponents(false, TableControl.Component.BUTTON_EXPORT);
 
             masterTable.reload();
         } catch (Exception ex) {
@@ -143,33 +158,51 @@ public class ResultadosController implements Initializable {
 
         @Override
         public TableData loadData(int startIndex, List<TableCriteria> filteredColumns, List<String> sortedColumns, List<TableColumn.SortType> sortingOrders, int maxResult) {
-            return daoLabSemillasResultados.fetch(startIndex, filteredColumns, sortedColumns, sortingOrders, maxResult);
+            try {
+                return daoLabSemillasResultados.fetch(startIndex, filteredColumns, sortedColumns, sortingOrders, maxResult);
+            } catch (Exception ex) {
+                Utils.showException(ex.toString(), ex.getMessage(), ex);
+                return null;
+            }
         }
 
         @Override
         public LabSemillasResultados preInsert(LabSemillasResultados newRecord) {
-            MessageDialogBuilder.info().message("No se pueden agregar resultados. Se asignan automaticamente a la muestra.").show(null);
+            try {
+                MessageDialogBuilder.info().message("No se pueden agregar resultados. Se asignan automaticamente a la muestra.").show(null);
+            } catch (Exception ex) {
+                Utils.showException(ex.toString(), ex.getMessage(), ex);
+                return null;
+            }
             return null;
         }
 
         @Override
         public boolean canEdit(LabSemillasResultados selectedRecord) {
-            if (selectedRecord == null) {
-                MessageDialogBuilder.error().message("Debe seleccionar un registro para editrlo.").show(null);
-                return false;
+            try {
+                if (selectedRecord == null) {
+                    MessageDialogBuilder.error().message("Debe seleccionar un registro para editrlo.").show(null);
+                    return false;
+                }
+                showLabSemillasResultados(selectedRecord, Form.Mode.EDIT);
+            } catch (Exception ex) {
+                Utils.showException(ex.toString(), ex.getMessage(), ex);
             }
-            showLabSemillasResultados(selectedRecord, Form.Mode.EDIT);
             return false;
         }
 
         @Override
         public void doubleClick(LabSemillasResultados record) {
-            showLabSemillasResultados(record, Form.Mode.READ);
+            try {
+                showLabSemillasResultados(record, Form.Mode.READ);
+            } catch (Exception ex) {
+                Utils.showException(ex.toString(), ex.getMessage(), ex);
+            }
         }
 
         @Override
         public void delete(List<LabSemillasResultados> records) {
-            MessageDialogBuilder.info().message("No se pueden eliminar resultados. Se eliminan automaticamente al eliminar la muestra.").show(null);
+            //MessageDialogBuilder.info().message("No se pueden eliminar resultados. Se eliminan automaticamente al eliminar la muestra.").show(null);
         }
 
         private void showLabSemillasResultados(LabSemillasResultados factura, Form.Mode mode) {

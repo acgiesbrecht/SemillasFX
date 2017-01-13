@@ -1,11 +1,25 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import com.panemu.tiwulfx.table.TableControl?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.control.Spinner?>
+<?import javafx.scene.control.ToggleGroup?>
 <?import javafx.scene.layout.AnchorPane?>
 
-
-<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8.0.111" fx:controller="com.chortitzer.lab.semillasjfx.controller.InformesController">
-    <children>
-      
-    </children>
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.chortitzer.lab.semillasjfx.controller.InformesController">
+   <children>
+      <RadioButton fx:id="rbMensual" layoutX="14.0" layoutY="14.0" mnemonicParsing="false" selected="true" text="Mensual">
+         <toggleGroup>
+            <ToggleGroup fx:id="informes" />
+         </toggleGroup>
+      </RadioButton>
+      <RadioButton fx:id="rbAnual" layoutX="98.0" layoutY="14.0" mnemonicParsing="false" text="Anual" toggleGroup="$informes" />
+      <Label fx:id="lblMes" layoutX="13.0" layoutY="79.0" text="Mes" />
+      <Label layoutX="13.0" layoutY="48.0" text="Año" />
+      <ComboBox fx:id="cboMes" editable="true" layoutX="48.0" layoutY="75.0" prefHeight="25.0" prefWidth="98.0" />
+      <Spinner fx:id="spAno" editable="true" layoutX="49.0" layoutY="44.0" prefHeight="25.0" prefWidth="98.0" />
+      <Button fx:id="cmdView" defaultButton="true" layoutX="10.0" layoutY="116.0" mnemonicParsing="false" onAction="#cmdView" prefWidth="141.0" text="Ver Informe" />
+   </children>
 </AnchorPane>

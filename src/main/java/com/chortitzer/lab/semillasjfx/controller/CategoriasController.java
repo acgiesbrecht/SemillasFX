@@ -7,6 +7,7 @@ package com.chortitzer.lab.semillasjfx.controller;
 
 import com.chortitzer.lab.semillasjfx.DaoBase;
 import com.chortitzer.lab.semillasjfx.domain.LabSemillasCategorias;
+import com.chortitzer.lab.semillasjfx.utils.Utils;
 import com.panemu.tiwulfx.common.TableCriteria;
 import com.panemu.tiwulfx.common.TableData;
 import com.panemu.tiwulfx.table.NumberColumn;
@@ -37,19 +38,23 @@ public class CategoriasController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+        try {
+            masterTable.setController(cntlLabSemillasCategorias);
+            masterTable.setRecordClass(LabSemillasCategorias.class);
 
-        masterTable.setController(cntlLabSemillasCategorias);
-        masterTable.setRecordClass(LabSemillasCategorias.class);
+            NumberColumn<LabSemillasCategorias, Integer> cId = new NumberColumn<>("id", Integer.class);
+            cId.setText("ID");
+            cId.setEditable(false);
 
-        NumberColumn<LabSemillasCategorias, Integer> cId = new NumberColumn<>("id", Integer.class);
-        cId.setText("ID");
-        cId.setEditable(false);
+            TextColumn<LabSemillasCategorias> cDescripcion = new TextColumn<>("descripcion");
+            cDescripcion.setText("Descripcion");
 
-        TextColumn<LabSemillasCategorias> cDescripcion = new TextColumn<>("descripcion");
-        cDescripcion.setText("Descripcion");
-
-        masterTable.addColumn(cId, cDescripcion);
-        masterTable.reload();
+            masterTable.addColumn(cId, cDescripcion);
+            masterTable.reload();
+        } catch (Exception ex) {
+            ex.printStackTrace();
+            Utils.showException("Error", ex.getMessage(), ex);
+        }
     }
 
     private final TableController<LabSemillasCategorias> cntlLabSemillasCategorias = new TableController<LabSemillasCategorias>() {

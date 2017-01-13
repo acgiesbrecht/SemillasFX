@@ -7,6 +7,7 @@ package com.chortitzer.lab.semillasjfx.controller;
 
 import com.chortitzer.lab.semillasjfx.DaoBase;
 import com.chortitzer.lab.semillasjfx.domain.LabClientes;
+import com.chortitzer.lab.semillasjfx.utils.Utils;
 import com.panemu.tiwulfx.common.TableCriteria;
 import com.panemu.tiwulfx.common.TableData;
 import com.panemu.tiwulfx.table.CtaCteColumn;
@@ -38,30 +39,35 @@ public class ClientesController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        masterTable.setController(cntlLabClientes);
-        masterTable.setRecordClass(LabClientes.class);
+        try {
+            masterTable.setController(cntlLabClientes);
+            masterTable.setRecordClass(LabClientes.class);
 
-        NumberColumn<LabClientes, Integer> cId = new NumberColumn<>("id", Integer.class);
-        cId.setText("ID");
-        cId.setEditable(false);
+            NumberColumn<LabClientes, Integer> cId = new NumberColumn<>("id", Integer.class);
+            cId.setText("ID");
+            cId.setEditable(false);
 
-        TextColumn<LabClientes> cNombre = new TextColumn<>("nombre");
-        cNombre.setText("Nombre");
+            TextColumn<LabClientes> cNombre = new TextColumn<>("nombre");
+            cNombre.setText("Nombre");
 
-        CtaCteColumn<LabClientes, Integer> cCtaCte = new CtaCteColumn<>("ctacte", Integer.class);
-        cCtaCte.setText("Cta. Cte. C.Ch.");
+            CtaCteColumn<LabClientes, Integer> cCtaCte = new CtaCteColumn<>("ctacte", Integer.class);
+            cCtaCte.setText("Cta. Cte. C.Ch.");
 
-        TextColumn<LabClientes> cDireccion = new TextColumn<>("direccion");
-        cDireccion.setText("Direccion");
+            TextColumn<LabClientes> cDireccion = new TextColumn<>("direccion");
+            cDireccion.setText("Direccion");
 
-        NumberColumn<LabClientes, Integer> cTelefono = new NumberColumn<>("telefono", Integer.class);
-        cTelefono.setText("Telefono");
+            NumberColumn<LabClientes, Integer> cTelefono = new NumberColumn<>("telefono", Integer.class);
+            cTelefono.setText("Telefono");
 
-        NumberColumn<LabClientes, Integer> cCedula = new NumberColumn<>("cedula", Integer.class);
-        cCedula.setText("Cedula");
+            NumberColumn<LabClientes, Integer> cCedula = new NumberColumn<>("cedula", Integer.class);
+            cCedula.setText("Cedula");
 
-        masterTable.addColumn(cId, cNombre, cCtaCte, cDireccion, cTelefono, cCedula);
-        masterTable.reload();
+            masterTable.addColumn(cId, cNombre, cCtaCte, cDireccion, cTelefono, cCedula);
+            masterTable.reload();
+        } catch (Exception ex) {
+            ex.printStackTrace();
+            Utils.showException("Error", ex.getMessage(), ex);
+        }
     }
 
     private final TableController<LabClientes> cntlLabClientes = new TableController<LabClientes>() {
