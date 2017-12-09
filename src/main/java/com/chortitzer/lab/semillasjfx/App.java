@@ -43,13 +43,14 @@ public class App extends Application {
     @Override
     public void start(Stage stage) throws Exception {
 
-        MenuBar menu = FXMLLoader.load(getClass().getResource("/fxml/MenuPrincipal.fxml"));
-        AnchorPane welcomePane = FXMLLoader.load(getClass().getResource("/fxml/Welcome.fxml"));
+        MenuBar menu = FXMLLoader.load(this.getClass().getResource("/fxml/MenuPrincipal.fxml"));
+        AnchorPane welcomePane = FXMLLoader.load(this.getClass().getResource("/fxml/Welcome.fxml"));
 
         root.setTop(menu);
         root.setCenter(welcomePane);
 
         Scene scene = new Scene(root);
+        scene.getStylesheets().add((this.getClass().getResource("/com/panemu/tiwulfx/res/tiwulfx.css").toExternalForm()));//load tiwulfx.css
         stage.setScene(scene);
 
         InputStream resourceAsStream = this.getClass().getResourceAsStream("/version.properties");
